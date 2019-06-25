@@ -3,17 +3,22 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		028CD82822C152DA005CDB3E /* PkmnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028CD82722C152DA005CDB3E /* PkmnTests.swift */; };
 		028CD83322C152DA005CDB3E /* PkmnUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028CD83222C152DA005CDB3E /* PkmnUITests.swift */; };
 		028CD84B22C15363005CDB3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 028CD84122C15362005CDB3E /* Assets.xcassets */; };
 		028CD84C22C15363005CDB3E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 028CD84222C15362005CDB3E /* LaunchScreen.storyboard */; };
 		028CD84D22C15363005CDB3E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 028CD84422C15362005CDB3E /* Main.storyboard */; };
-		028CD84F22C15363005CDB3E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028CD84922C15363005CDB3E /* ViewController.swift */; };
 		028CD85022C15363005CDB3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028CD84A22C15363005CDB3E /* AppDelegate.swift */; };
+		028CD85222C1556B005CDB3E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 028CD85122C1556B005CDB3E /* README.md */; };
+		028CD85422C157AD005CDB3E /* db.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = 028CD85322C157AD005CDB3E /* db.sqlite3 */; };
+		028CD85722C15A22005CDB3E /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028CD85622C15A22005CDB3E /* Database.swift */; };
+		028CD85922C15E28005CDB3E /* DatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028CD85822C15E28005CDB3E /* DatabaseTests.swift */; };
+		028CD85D22C2ADF5005CDB3E /* PokemonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028CD85C22C2ADF5005CDB3E /* PokemonType.swift */; };
+		028CD86122C2B844005CDB3E /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028CD86022C2B844005CDB3E /* DataProvider.swift */; };
+		29425C212D9BA3BBAF2FB236 /* Pods_All_Pkmn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE4607EB0544580219E37D1C /* Pods_All_Pkmn.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +41,6 @@
 /* Begin PBXFileReference section */
 		028CD80F22C152D7005CDB3E /* Pkmn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pkmn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		028CD82322C152DA005CDB3E /* PkmnTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PkmnTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		028CD82722C152DA005CDB3E /* PkmnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PkmnTests.swift; sourceTree = "<group>"; };
 		028CD82922C152DA005CDB3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		028CD82E22C152DA005CDB3E /* PkmnUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PkmnUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		028CD83222C152DA005CDB3E /* PkmnUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PkmnUITests.swift; sourceTree = "<group>"; };
@@ -45,8 +49,16 @@
 		028CD84322C15362005CDB3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		028CD84522C15362005CDB3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		028CD84722C15363005CDB3E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		028CD84922C15363005CDB3E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		028CD84A22C15363005CDB3E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		028CD85122C1556B005CDB3E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		028CD85322C157AD005CDB3E /* db.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = db.sqlite3; path = "submodules/pokemon-database/db.sqlite3"; sourceTree = SOURCE_ROOT; };
+		028CD85622C15A22005CDB3E /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		028CD85822C15E28005CDB3E /* DatabaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseTests.swift; sourceTree = "<group>"; };
+		028CD85C22C2ADF5005CDB3E /* PokemonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonType.swift; sourceTree = "<group>"; };
+		028CD86022C2B844005CDB3E /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		5BCF5818717F7E05F6710F16 /* Pods-All-Pkmn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-All-Pkmn.release.xcconfig"; path = "Target Support Files/Pods-All-Pkmn/Pods-All-Pkmn.release.xcconfig"; sourceTree = "<group>"; };
+		84A1C425226C6BC24597EB02 /* Pods-All-Pkmn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-All-Pkmn.debug.xcconfig"; path = "Target Support Files/Pods-All-Pkmn/Pods-All-Pkmn.debug.xcconfig"; sourceTree = "<group>"; };
+		DE4607EB0544580219E37D1C /* Pods_All_Pkmn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_All_Pkmn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29425C212D9BA3BBAF2FB236 /* Pods_All_Pkmn.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +94,9 @@
 				028CD82622C152DA005CDB3E /* PkmnTests */,
 				028CD83122C152DA005CDB3E /* PkmnUITests */,
 				028CD81022C152D7005CDB3E /* Products */,
+				028CD85122C1556B005CDB3E /* README.md */,
+				93B93A39A98D8DD91A78E60D /* Pods */,
+				F176636550FC96AE87746CFC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -107,8 +123,8 @@
 		028CD82622C152DA005CDB3E /* PkmnTests */ = {
 			isa = PBXGroup;
 			children = (
-				028CD82722C152DA005CDB3E /* PkmnTests.swift */,
 				028CD82922C152DA005CDB3E /* Info.plist */,
+				028CD85822C15E28005CDB3E /* DatabaseTests.swift */,
 			);
 			path = PkmnTests;
 			sourceTree = "<group>";
@@ -125,6 +141,7 @@
 		028CD84022C15362005CDB3E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				028CD85322C157AD005CDB3E /* db.sqlite3 */,
 				028CD84122C15362005CDB3E /* Assets.xcassets */,
 				028CD84222C15362005CDB3E /* LaunchScreen.storyboard */,
 				028CD84422C15362005CDB3E /* Main.storyboard */,
@@ -144,9 +161,52 @@
 			isa = PBXGroup;
 			children = (
 				028CD84A22C15363005CDB3E /* AppDelegate.swift */,
-				028CD84922C15363005CDB3E /* ViewController.swift */,
+				028CD85B22C2AD9A005CDB3E /* Model */,
+				028CD85522C15A07005CDB3E /* Database */,
+				028CD85A22C2AD45005CDB3E /* TypeChecker */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		028CD85522C15A07005CDB3E /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				028CD85622C15A22005CDB3E /* Database.swift */,
+				028CD86022C2B844005CDB3E /* DataProvider.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		028CD85A22C2AD45005CDB3E /* TypeChecker */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TypeChecker;
+			sourceTree = "<group>";
+		};
+		028CD85B22C2AD9A005CDB3E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				028CD85C22C2ADF5005CDB3E /* PokemonType.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		93B93A39A98D8DD91A78E60D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				84A1C425226C6BC24597EB02 /* Pods-All-Pkmn.debug.xcconfig */,
+				5BCF5818717F7E05F6710F16 /* Pods-All-Pkmn.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F176636550FC96AE87746CFC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DE4607EB0544580219E37D1C /* Pods_All_Pkmn.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,9 +216,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 028CD83722C152DA005CDB3E /* Build configuration list for PBXNativeTarget "Pkmn" */;
 			buildPhases = (
+				83EB1F7992457544CE2E85A1 /* [CP] Check Pods Manifest.lock */,
 				028CD80B22C152D7005CDB3E /* Sources */,
 				028CD80C22C152D7005CDB3E /* Frameworks */,
 				028CD80D22C152D7005CDB3E /* Resources */,
+				8007FC17C71A7773BC3164A6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -254,7 +316,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				028CD84D22C15363005CDB3E /* Main.storyboard in Resources */,
+				028CD85422C157AD005CDB3E /* db.sqlite3 in Resources */,
 				028CD84B22C15363005CDB3E /* Assets.xcassets in Resources */,
+				028CD85222C1556B005CDB3E /* README.md in Resources */,
 				028CD84C22C15363005CDB3E /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,13 +339,57 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8007FC17C71A7773BC3164A6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-All-Pkmn/Pods-All-Pkmn-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-All-Pkmn/Pods-All-Pkmn-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-All-Pkmn/Pods-All-Pkmn-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		83EB1F7992457544CE2E85A1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-All-Pkmn-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		028CD80B22C152D7005CDB3E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				028CD85D22C2ADF5005CDB3E /* PokemonType.swift in Sources */,
 				028CD85022C15363005CDB3E /* AppDelegate.swift in Sources */,
-				028CD84F22C15363005CDB3E /* ViewController.swift in Sources */,
+				028CD86122C2B844005CDB3E /* DataProvider.swift in Sources */,
+				028CD85722C15A22005CDB3E /* Database.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,7 +397,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				028CD82822C152DA005CDB3E /* PkmnTests.swift in Sources */,
+				028CD85922C15E28005CDB3E /* DatabaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,6 +562,7 @@
 		};
 		028CD83822C152DA005CDB3E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 84A1C425226C6BC24597EB02 /* Pods-All-Pkmn.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -473,6 +582,7 @@
 		};
 		028CD83922C152DA005CDB3E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5BCF5818717F7E05F6710F16 /* Pods-All-Pkmn.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

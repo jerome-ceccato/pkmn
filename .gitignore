@@ -75,3 +75,6 @@ fastlane/test_output
 # emacs
 *~
 **/*~
+
+# submodules
+submodules
