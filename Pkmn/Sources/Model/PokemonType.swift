@@ -13,19 +13,6 @@ struct PokemonType {
     let name: String
 }
 
-struct PokemonTypeEfficacy {
-    let damageTypeIdentifier: Int
-    let targetTypeIdentifier: Int
-    let damageFactor: Int
-}
-
-struct PokemonTypeEfficacyMapping {
-    typealias TypeIdentifier = Int
-    typealias DamageFactor = Int
-    
-    let mapping: [TypeIdentifier: [TypeIdentifier: DamageFactor]]
-}
-
 extension PokemonType {
     static let unknownColor: UInt32 = 0x68A090
     static let colorMapping: [String: UInt32] = [
@@ -52,5 +39,61 @@ extension PokemonType {
     func color() -> UIColor {
         let rawColor = PokemonType.colorMapping[name] ?? PokemonType.unknownColor
         return UIColor(hexValue: rawColor)
+    }
+}
+
+struct PokemonTypeEfficacy {
+    let damageTypeIdentifier: Int
+    let targetTypeIdentifier: Int
+    let damageFactor: Int
+}
+
+struct PokemonTypeEfficacyMapping {
+    typealias TypeIdentifier = Int
+    typealias DamageFactor = Int
+    
+    let mapping: [TypeIdentifier: [TypeIdentifier: DamageFactor]]
+}
+
+extension PokemonTypeEfficacy {
+    enum Category {
+        case doubleEffective
+        case effective
+        case normal
+        case resistant
+        case doubleResistant
+        case immune
+    }
+}
+
+extension PokemonTypeEfficacy.Category {
+    init(damageFactor: Int) {
+        switch damageFactor {
+        case 0:
+            self = .immune
+        case 50:
+            self = .resistant
+        case 200:
+            self = .effective
+        default:
+            self = .normal
+        }
+    }
+    
+    init(category1: PokemonTypeEfficacy.Category, category2: PokemonTypeEfficacy.Category) {
+        switch (category1, category2) {
+        case (.effective, .effective):
+            self = .doubleEffective
+        case (.effective, .normal), (.normal, .effective):
+            self = .effective
+        case (.resistant, .normal), (.normal, .resistant):
+            self = .resistant
+        case (.resistant, .resistant):
+            self = .doubleResistant
+        case (.immune, _), (_, .immune):
+            self = .immune
+        default:
+            self = .normal
+        }
     }
 }

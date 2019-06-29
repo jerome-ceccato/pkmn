@@ -19,9 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         let viewModel = PokemonTypeCheckerViewModel(dataProvider: dataProvider)
-        let rootController = PokemonTypeEfficacyCheckerViewController.create(viewModel: viewModel)
-
-        self.window = makeWindow(with: rootController!)
+        let rootController = PokemonTypeEfficacyCheckerViewController.create(viewModel: viewModel)!
+        let navigationController = UINavigationController(rootViewController: rootController)
+        
+        self.window = makeWindow(with: navigationController)
         
         return true
     }

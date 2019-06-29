@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0218413822C7B16D007E5336 /* PokemonTypeCheckerScenarioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0218413722C7B16D007E5336 /* PokemonTypeCheckerScenarioButton.swift */; };
+		0218413B22C7C015007E5336 /* PokemonTypeEfficacyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0218413A22C7C015007E5336 /* PokemonTypeEfficacyCollectionViewCell.swift */; };
+		0218413D22C7C064007E5336 /* PokemonTypeEfficacyCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0218413C22C7C064007E5336 /* PokemonTypeEfficacyCollectionReusableView.swift */; };
 		025503BF22C6A2FB003D2149 /* UIColor+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025503BE22C6A2FB003D2149 /* UIColor+Custom.swift */; };
 		025503C122C6A374003D2149 /* PokemonTypeSelectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025503C022C6A374003D2149 /* PokemonTypeSelectionButton.swift */; };
 		025503C322C6A44E003D2149 /* Collection+SafeSubscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025503C222C6A44E003D2149 /* Collection+SafeSubscript.swift */; };
@@ -47,6 +49,8 @@
 
 /* Begin PBXFileReference section */
 		0218413722C7B16D007E5336 /* PokemonTypeCheckerScenarioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonTypeCheckerScenarioButton.swift; sourceTree = "<group>"; };
+		0218413A22C7C015007E5336 /* PokemonTypeEfficacyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTypeEfficacyCollectionViewCell.swift; sourceTree = "<group>"; };
+		0218413C22C7C064007E5336 /* PokemonTypeEfficacyCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTypeEfficacyCollectionReusableView.swift; sourceTree = "<group>"; };
 		025503BE22C6A2FB003D2149 /* UIColor+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Custom.swift"; sourceTree = "<group>"; };
 		025503C022C6A374003D2149 /* PokemonTypeSelectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTypeSelectionButton.swift; sourceTree = "<group>"; };
 		025503C222C6A44E003D2149 /* Collection+SafeSubscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+SafeSubscript.swift"; sourceTree = "<group>"; };
@@ -101,6 +105,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0218413922C7BFDE007E5336 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				025503C022C6A374003D2149 /* PokemonTypeSelectionButton.swift */,
+				0218413722C7B16D007E5336 /* PokemonTypeCheckerScenarioButton.swift */,
+				0218413C22C7C064007E5336 /* PokemonTypeEfficacyCollectionReusableView.swift */,
+				0218413A22C7C015007E5336 /* PokemonTypeEfficacyCollectionViewCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		028CD80622C152D7005CDB3E = {
 			isa = PBXGroup;
 			children = (
@@ -194,8 +209,7 @@
 		028CD85A22C2AD45005CDB3E /* TypeChecker */ = {
 			isa = PBXGroup;
 			children = (
-				025503C022C6A374003D2149 /* PokemonTypeSelectionButton.swift */,
-				0218413722C7B16D007E5336 /* PokemonTypeCheckerScenarioButton.swift */,
+				0218413922C7BFDE007E5336 /* Views */,
 				028CD86222C40824005CDB3E /* PokemonTypeEfficacyCheckerViewController.swift */,
 				028CD86722C409DE005CDB3E /* PokemonTypeCheckerViewModel.swift */,
 				028CD87022C41406005CDB3E /* PokemonTypeEfficacyCheckerViewController.storyboard */,
@@ -421,9 +435,11 @@
 				028CD85022C15363005CDB3E /* AppDelegate.swift in Sources */,
 				025503C322C6A44E003D2149 /* Collection+SafeSubscript.swift in Sources */,
 				028CD86822C409DE005CDB3E /* PokemonTypeCheckerViewModel.swift in Sources */,
+				0218413B22C7C015007E5336 /* PokemonTypeEfficacyCollectionViewCell.swift in Sources */,
 				028CD86122C2B844005CDB3E /* DataProvider.swift in Sources */,
 				028CD85722C15A22005CDB3E /* Database.swift in Sources */,
 				028CD86322C40824005CDB3E /* PokemonTypeEfficacyCheckerViewController.swift in Sources */,
+				0218413D22C7C064007E5336 /* PokemonTypeEfficacyCollectionReusableView.swift in Sources */,
 				025503C122C6A374003D2149 /* PokemonTypeSelectionButton.swift in Sources */,
 				0218413822C7B16D007E5336 /* PokemonTypeCheckerScenarioButton.swift in Sources */,
 			);
