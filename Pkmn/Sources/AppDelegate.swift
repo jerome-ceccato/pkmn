@@ -7,16 +7,26 @@
 //
 
 import UIKit
+import SQLite
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    lazy var database: Database = try! Database(filename: "db")
+    let databaseFilename = "db"
+    lazy var dbHandler: Connection = {
+        let path = Bundle.main.path(forResource: databaseFilename, ofType: "sqlite3")!
+        return try! Connection(path, readonly: true)
+    }()
+    lazy var database: Database = Database(handler: dbHandler)
     lazy var dataProvider: DataProvider = DataProvider(db: database)
+    lazy var localizationData: LocalizationData = LocalizationData(handler: dbHandler)
+    lazy var localizationProvider: PokemonLocalization = PokemonLocalization(db: localizationData)
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        localizationGlobalProvider = localizationProvider
         
         let viewModel = PokemonTypeCheckerViewModel(dataProvider: dataProvider)
         let rootController = PokemonTypeEfficacyCheckerViewController.create(viewModel: viewModel)!

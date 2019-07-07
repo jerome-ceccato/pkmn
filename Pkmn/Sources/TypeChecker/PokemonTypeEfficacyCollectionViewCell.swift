@@ -21,6 +21,6 @@ class PokemonTypeEfficacyCollectionViewCell: UICollectionViewCell {
     
     func configure(with type: PokemonType) {
         containerView.backgroundColor = type.color()
-        titleLabel.text = type.name
+        titleLabel.text = type.localizedName
     }
 }

@@ -13,6 +13,13 @@ struct PokemonType {
     let name: String
 }
 
+// Localization
+extension PokemonType {
+    var localizedName: String {
+        return pkmnLocalized(typeName: self)
+    }
+}
+
 extension PokemonType {
     static let unknownColor: UInt32 = 0x68A090
     static let colorMapping: [String: UInt32] = [

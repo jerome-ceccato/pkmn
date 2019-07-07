@@ -18,18 +18,18 @@ protocol PokemonTypeCheckerViewModelDelegate: class {
 }
 
 class PokemonTypeCheckerViewModel {
-    let dataProvider: DataProvider
+    private let dataProvider: DataProvider
     
     weak var delegate: PokemonTypeCheckerViewModelDelegate?
     
-    lazy var selectionButtons: [PokemonTypeSelectionButton] = {
+    private lazy var selectionButtons: [PokemonTypeSelectionButton] = {
         return self.dataProvider.types.map(self.createSelectionButton)
     }()
-    var attackSelectorButton: PokemonTypeCheckerScenarioButton!
-    var defendSelectorButton: PokemonTypeCheckerScenarioButton!
+    private var attackSelectorButton: PokemonTypeCheckerScenarioButton!
+    private var defendSelectorButton: PokemonTypeCheckerScenarioButton!
     
     typealias ResultSection = (section: PokemonTypeEfficacy.Category, types: [PokemonType])
-    var results: [ResultSection] = []
+    private var results: [ResultSection] = []
     
     init(dataProvider: DataProvider) {
         self.dataProvider = dataProvider
@@ -42,18 +42,24 @@ extension PokemonTypeCheckerViewModel {
         return attackSelectorButton.isSelected ? .attack : .defend
     }
     
+    var typeName: String? {
+        guard !selectedButtons().isEmpty else {
+            return nil
+        }
+        
+        var typeName = selectedButtons()[0].type.localizedName
+        if let secondName = selectedButtons()[safe: 1]?.type.localizedName {
+            typeName += " & \(secondName)"
+        }
+        return typeName
+    }
+    
     var title: String {
-        if currentScenario == .attack {
-            if let typeName = selectedButtons().first?.type.name {
-                return "\(typeName) is effective against"
-            }
-        } else {
-            if selectedButtons().count > 0 {
-                var typeName = selectedButtons()[0].type.name
-                if let secondName = selectedButtons()[safe: 1]?.type.name {
-                    typeName += "/\(secondName)"
-                }
-                return "Attacks effective against \(typeName)"
+        if let types = self.typeName {
+            if currentScenario == .attack {
+                return "\(types) is effective against"
+            } else {
+                return "Attacks effective against \(types)"
             }
         }
         return ""
@@ -125,6 +131,25 @@ extension PokemonTypeCheckerViewModel {
             
             updateResults()
         }
+    }
+}
+
+// Results
+extension PokemonTypeCheckerViewModel {
+    func numberOfResultSections() -> Int {
+        return results.count
+    }
+    
+    func numberOfResultTypes(for section: Int) -> Int {
+        return results[section].types.count
+    }
+    
+    func headerViewModel(for section: Int) -> PokemonTypeCheckerEfficacyCategoryViewModel {
+        return PokemonTypeCheckerEfficacyCategoryViewModel(category: results[section].section)
+    }
+    
+    func cellType(for indexPath: IndexPath) -> PokemonType {
+        return results[indexPath.section].types[indexPath.item]
     }
 }
 

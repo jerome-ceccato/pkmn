@@ -24,11 +24,12 @@ class PokemonTypeEfficacyCheckerViewController: UIViewController {
     @IBOutlet var defendSelectorButton: PokemonTypeCheckerScenarioButton!
     @IBOutlet var resultsCollectionView: UICollectionView!
 
-    var resultCellSize = CGSize(width: 80, height: 30)
+    var resultCellSize = CGSize(width: 80, height: 34)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupLayout()
         setupTypePicker()
         setupScenarios()
         updateCollectionViewCellSize()
@@ -39,6 +40,10 @@ class PokemonTypeEfficacyCheckerViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         updateCollectionViewCellSize()
+    }
+    
+    func setupLayout() {
+        resultsCollectionView.contentInset = UIEdgeInsets(top: 6, left: 0, bottom: 6, right: 0)
     }
 }
 
@@ -87,18 +92,18 @@ extension PokemonTypeEfficacyCheckerViewController: UICollectionViewDataSource, 
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return viewModel.results.count
+        return viewModel.numberOfResultSections()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.results[section].types.count
+        return viewModel.numberOfResultTypes(for: section)
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let reuseIdentifier = String(describing: PokemonTypeEfficacyCollectionReusableView.self)
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: reuseIdentifier, for: indexPath) as! PokemonTypeEfficacyCollectionReusableView
         
-        headerView.configure(with: viewModel.results[indexPath.section].section)
+        headerView.configure(with: viewModel.headerViewModel(for: indexPath.section))
         return headerView
     }
     
@@ -106,7 +111,7 @@ extension PokemonTypeEfficacyCheckerViewController: UICollectionViewDataSource, 
         let reuseIdentifer = String(describing: PokemonTypeEfficacyCollectionViewCell.self)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifer, for: indexPath) as! PokemonTypeEfficacyCollectionViewCell
 
-        cell.configure(with: viewModel.results[indexPath.section].types[indexPath.row])
+        cell.configure(with: viewModel.cellType(for: indexPath))
         return cell
     }
     

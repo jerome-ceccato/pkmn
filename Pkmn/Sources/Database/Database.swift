@@ -9,9 +9,7 @@
 import Foundation
 import SQLite
 
-class Database {
-    private let db: Connection
-    
+class Database: DatabaseWrapper {
     let tableTypes = Table("types")
     let tableTypeEfficacy = Table("type_efficacy")
     let tableSpecies = Table("pokemon_species")
@@ -21,22 +19,6 @@ class Database {
     let columnDamageTypeId = Expression<Int>("damage_type_id")
     let columnTargetTypeId = Expression<Int>("target_type_id")
     let columnDamageFactor = Expression<Int>("damage_factor")
-    
-    init(filename: String) throws {
-        let path = Bundle.main.path(forResource: filename, ofType: "sqlite3")!
-        db = try Connection(path, readonly: true)
-    }
-}
-
-// Helpers
-private extension Database {
-    func select<T>(_ query: QueryType, transform: (Row) -> T) -> [T] {
-        return (try? db.prepare(query).map(transform)) ?? []
-    }
-    
-    func count(_ query: SchemaType) -> Int {
-        return (try? db.scalar(query.count)) ?? 0
-    }
 }
 
 // Types

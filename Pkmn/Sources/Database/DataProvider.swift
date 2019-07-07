@@ -9,7 +9,7 @@
 import UIKit
 
 class DataProvider {
-    let db: Database
+    private let db: Database
     
     init(db: Database) {
         self.db = db

@@ -17,7 +17,7 @@ class PokemonTypeSelectionButton: UIButton {
         self.type = type
         backgroundColor = type.color()
 
-        setAttributedTitle(boldTitle(with: type.name, color: .white), for: .normal)
+        setAttributedTitle(boldTitle(with: type.localizedName, color: .white), for: .normal)
         
         layer.cornerRadius = 8
         layer.shadowRadius = 1
