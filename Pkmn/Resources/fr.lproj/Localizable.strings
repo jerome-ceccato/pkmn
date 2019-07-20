@@ -1,0 +1,8 @@
+"TypeCheckerTitleAttack" = "%@ est efficace contre";
+"TypeCheckerTitleDefence" = "Attaques efficaces contre %@";
+"TypeCheckerCombinedTypes" = "%@ & %@";
+
+"TypeEfficacySuperEffective" = "Super efficace";
+"TypeEfficacyNormal" = "Normal";
+"TypeEfficacyNotVeryEffective" = "Pas très efficace";
+"TypeEfficacyNoEffect" = "Aucun effet";

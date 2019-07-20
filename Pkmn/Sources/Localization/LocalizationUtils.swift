@@ -13,3 +13,22 @@ var localizationGlobalProvider: PokemonLocalization?
 func pkmnLocalized(typeName: PokemonType) -> String {
     return localizationGlobalProvider?.typeNames[typeName.identifier] ?? typeName.name
 }
+
+// Global helpers
+
+func pkmnLocalizedString(_ content: String) -> String {
+    return NSLocalizedString(content, comment: content)
+}
+func pkmnLocalizedString(format: String, _ arguments: CVarArg...) -> String {
+    return String(format: NSLocalizedString(format, comment: format),
+                  locale: .current,
+                  arguments: arguments)
+}
+
+func pkmnLocalizedNumber(_ number: NSNumber) -> String {
+    let formatter = NumberFormatter()
+    formatter.numberStyle = .decimal
+    formatter.locale = NSLocale.current
+    
+    return formatter.string(from: number) ?? number.stringValue
+}

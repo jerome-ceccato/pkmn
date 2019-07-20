@@ -49,7 +49,7 @@ extension PokemonTypeCheckerViewModel {
         
         var typeName = selectedButtons()[0].type.localizedName
         if let secondName = selectedButtons()[safe: 1]?.type.localizedName {
-            typeName += " & \(secondName)"
+            typeName = pkmnLocalizedString(format: "TypeCheckerCombinedTypes", typeName, secondName)
         }
         return typeName
     }
@@ -57,9 +57,9 @@ extension PokemonTypeCheckerViewModel {
     var title: String {
         if let types = self.typeName {
             if currentScenario == .attack {
-                return "\(types) is effective against"
+                return pkmnLocalizedString(format: "TypeCheckerTitleAttack", types)
             } else {
-                return "Attacks effective against \(types)"
+                return pkmnLocalizedString(format: "TypeCheckerTitleDefence", types)
             }
         }
         return ""

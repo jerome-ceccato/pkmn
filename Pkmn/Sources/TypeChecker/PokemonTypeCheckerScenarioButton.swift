@@ -42,7 +42,7 @@ class PokemonTypeCheckerScenarioButton: UIButton {
             layer.borderWidth = 0
             iconImageView?.tintColor = .white
             textLabel?.textColor = .white
-            
+
         } else {
             backgroundColor = .clear
             layer.borderWidth = 1

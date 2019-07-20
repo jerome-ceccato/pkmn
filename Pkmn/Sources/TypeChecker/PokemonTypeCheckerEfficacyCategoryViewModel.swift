@@ -20,13 +20,13 @@ extension PokemonTypeCheckerEfficacyCategoryViewModel {
     var displayString: String {
         switch category {
         case .doubleEffective, .effective:
-            return "Super effective"
+            return pkmnLocalizedString("TypeEfficacySuperEffective")
         case .normal:
-            return "Normal"
+            return pkmnLocalizedString("TypeEfficacyNormal")
         case .resistant, .doubleResistant:
-            return "Not very effective"
+            return pkmnLocalizedString("TypeEfficacyNotVeryEffective")
         case .immune:
-            return "No effect"
+            return pkmnLocalizedString("TypeEfficacyNoEffect")
         }
     }
     
@@ -37,17 +37,17 @@ extension PokemonTypeCheckerEfficacyCategoryViewModel {
     var multiplierString: String {
         switch category {
         case .doubleEffective:
-            return "4"
+            return pkmnLocalizedNumber(4)
         case .effective:
-            return "2"
+            return pkmnLocalizedNumber(2)
         case .normal:
-            return "1"
+            return pkmnLocalizedNumber(1)
         case .resistant:
-            return "0.5"
+            return pkmnLocalizedNumber(0.5)
         case .doubleResistant:
-            return "0.25"
+            return pkmnLocalizedNumber(0.25)
         case .immune:
-            return "0"
+            return pkmnLocalizedNumber(0)
         }
     }
     
