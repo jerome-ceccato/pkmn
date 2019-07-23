@@ -23,27 +23,15 @@ class PokemonTypeEfficacyCheckerViewController: UIViewController {
     @IBOutlet var attackSelectorButton: PokemonTypeCheckerScenarioButton!
     @IBOutlet var defendSelectorButton: PokemonTypeCheckerScenarioButton!
     @IBOutlet var resultsCollectionView: UICollectionView!
-
-    var resultCellSize = CGSize(width: 80, height: 34)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupLayout()
         setupTypePicker()
         setupScenarios()
-        updateCollectionViewCellSize()
+        setupResultsCollectionView()
         
         viewModel.delegate = self
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        updateCollectionViewCellSize()
-    }
-    
-    func setupLayout() {
-        resultsCollectionView.contentInset = UIEdgeInsets(top: 6, left: 0, bottom: 6, right: 0)
     }
 }
 
@@ -75,20 +63,11 @@ extension PokemonTypeEfficacyCheckerViewController {
 }
 
 // Results
-extension PokemonTypeEfficacyCheckerViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    func updateCollectionViewCellSize() {
-        let layout = resultsCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        let targetCellsPerRow = 4
-        let totalSize = resultsCollectionView.bounds.width
-        let sectionSpacing = layout.sectionInset.left + layout.sectionInset.right
-        let itemSpacing = CGFloat(targetCellsPerRow - 1) * layout.minimumInteritemSpacing
-        let availableSize = totalSize - (sectionSpacing + itemSpacing)
-        let width = floor(availableSize / CGFloat(targetCellsPerRow))
-        
-        if abs(resultCellSize.width - width) > 0.1 {
-            resultCellSize.width = width
-            layout.invalidateLayout()
-        }
+extension PokemonTypeEfficacyCheckerViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func setupResultsCollectionView() {
+        resultsCollectionView.register(PokemonTypeEfficacyCollectionReusableView.self,
+                                       forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                       withReuseIdentifier: String(describing: PokemonTypeEfficacyCollectionReusableView.self))
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -113,9 +92,5 @@ extension PokemonTypeEfficacyCheckerViewController: UICollectionViewDataSource, 
 
         cell.configure(with: viewModel.cellType(for: indexPath))
         return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return resultCellSize
     }
 }

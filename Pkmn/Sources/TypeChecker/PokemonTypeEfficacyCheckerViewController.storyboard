@@ -24,25 +24,20 @@
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2Ix-PQ-WXm">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="293"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="6" id="q4R-Yf-dey">
-                                            <size key="itemSize" width="80" height="34"/>
-                                            <size key="headerReferenceSize" width="375" height="30"/>
-                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                            <inset key="sectionInset" minX="6" minY="4" maxX="6" maxY="4"/>
-                                        </collectionViewFlowLayout>
+                                        <collectionViewLayout key="collectionViewLayout" id="TlW-Hw-Hex" customClass="PokemonTypeEfficacyCollectionViewLayout" customModule="Pkmn" customModuleProvider="target"/>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PokemonTypeEfficacyCollectionViewCell" id="VBE-3p-ysN" customClass="PokemonTypeEfficacyCollectionViewCell" customModule="Pkmn" customModuleProvider="target">
-                                                <rect key="frame" x="6" y="34" width="80" height="34"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="80" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="34"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="30"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SCQ-sX-ZXw">
-                                                            <rect key="frame" x="0.0" y="4" width="80" height="26"/>
+                                                            <rect key="frame" x="0.0" y="2" width="80" height="27"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="33h-b2-Jv8">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="26"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="27"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
@@ -59,68 +54,18 @@
                                                     </subviews>
                                                 </view>
                                                 <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="SCQ-sX-ZXw" secondAttribute="bottom" constant="4" id="Ca7-TE-9jI"/>
+                                                    <constraint firstAttribute="bottom" secondItem="SCQ-sX-ZXw" secondAttribute="bottom" constant="2" id="Ca7-TE-9jI"/>
                                                     <constraint firstAttribute="trailing" secondItem="SCQ-sX-ZXw" secondAttribute="trailing" id="Faa-kX-kca"/>
                                                     <constraint firstItem="SCQ-sX-ZXw" firstAttribute="leading" secondItem="VBE-3p-ysN" secondAttribute="leading" id="X7j-ym-4Mv"/>
-                                                    <constraint firstItem="SCQ-sX-ZXw" firstAttribute="top" secondItem="VBE-3p-ysN" secondAttribute="top" constant="4" id="bQM-T1-8J6"/>
+                                                    <constraint firstItem="SCQ-sX-ZXw" firstAttribute="top" secondItem="VBE-3p-ysN" secondAttribute="top" constant="2" id="bQM-T1-8J6"/>
                                                 </constraints>
-                                                <size key="customSize" width="80" height="34"/>
+                                                <size key="customSize" width="80" height="30"/>
                                                 <connections>
                                                     <outlet property="containerView" destination="SCQ-sX-ZXw" id="sEb-aX-oq6"/>
                                                     <outlet property="titleLabel" destination="33h-b2-Jv8" id="uvd-LU-IUd"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
-                                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="PokemonTypeEfficacyCollectionReusableView" id="pC2-3q-Kjx" customClass="PokemonTypeEfficacyCollectionReusableView" customModule="Pkmn" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="901" text="Normal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xDH-s9-dG9">
-                                                    <rect key="frame" x="8" y="0.0" width="54" height="30"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="902" text="x2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qDO-Fa-mDJ">
-                                                    <rect key="frame" x="273.5" y="0.0" width="20.5" height="30"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pfJ-g8-05Q">
-                                                    <rect key="frame" x="74" y="11" width="187.5" height="8"/>
-                                                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="8" id="hj5-re-d3U"/>
-                                                    </constraints>
-                                                </view>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="pfJ-g8-05Q" firstAttribute="width" secondItem="pC2-3q-Kjx" secondAttribute="width" multiplier="0.5" priority="800" id="FNd-fj-BRk"/>
-                                                <constraint firstItem="pfJ-g8-05Q" firstAttribute="centerY" secondItem="pC2-3q-Kjx" secondAttribute="centerY" id="L7c-ci-lMs"/>
-                                                <constraint firstItem="qDO-Fa-mDJ" firstAttribute="top" secondItem="pC2-3q-Kjx" secondAttribute="top" id="NCr-No-KQe"/>
-                                                <constraint firstAttribute="bottom" secondItem="xDH-s9-dG9" secondAttribute="bottom" id="RSm-c2-mTZ"/>
-                                                <constraint firstAttribute="bottom" secondItem="qDO-Fa-mDJ" secondAttribute="bottom" id="XQG-73-kWx"/>
-                                                <constraint firstItem="qDO-Fa-mDJ" firstAttribute="leading" secondItem="pfJ-g8-05Q" secondAttribute="trailing" priority="999" constant="12" id="cyC-Zb-Tjl"/>
-                                                <constraint firstItem="qDO-Fa-mDJ" firstAttribute="leading" secondItem="xDH-s9-dG9" secondAttribute="trailing" constant="12" id="hua-TV-aO5"/>
-                                                <constraint firstItem="xDH-s9-dG9" firstAttribute="leading" secondItem="pC2-3q-Kjx" secondAttribute="leadingMargin" id="rW5-Vo-kwJ"/>
-                                                <constraint firstItem="pfJ-g8-05Q" firstAttribute="leading" secondItem="xDH-s9-dG9" secondAttribute="trailing" constant="12" id="tll-Ns-6a3"/>
-                                                <constraint firstItem="xDH-s9-dG9" firstAttribute="top" secondItem="pC2-3q-Kjx" secondAttribute="top" id="u94-wy-uLl"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qDO-Fa-mDJ" secondAttribute="trailing" constant="8" id="uDx-jR-ftV"/>
-                                            </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="hua-TV-aO5"/>
-                                                </mask>
-                                            </variation>
-                                            <connections>
-                                                <outlet property="multiplierLabel" destination="qDO-Fa-mDJ" id="k2A-F1-gXZ"/>
-                                                <outlet property="titleLabel" destination="xDH-s9-dG9" id="wEW-6H-73D"/>
-                                                <outlet property="visualIndicatorHiddenConstraint" destination="hua-TV-aO5" id="co2-e6-H2N"/>
-                                                <outlet property="visualIndicatorView" destination="pfJ-g8-05Q" id="5XE-KB-ElS"/>
-                                                <outlet property="visualIndicatorWidthConstraint" destination="FNd-fj-BRk" id="o8z-tj-cwE"/>
-                                            </connections>
-                                        </collectionReusableView>
                                         <connections>
                                             <outlet property="dataSource" destination="AAC-y8-hHg" id="BOE-ms-wDu"/>
                                             <outlet property="delegate" destination="AAC-y8-hHg" id="qOI-hC-HMs"/>

@@ -17,19 +17,6 @@ class PokemonTypeCheckerEfficacyCategoryViewModel {
 }
 
 extension PokemonTypeCheckerEfficacyCategoryViewModel {
-    var displayString: String {
-        switch category {
-        case .doubleEffective, .effective:
-            return pkmnLocalizedString("TypeEfficacySuperEffective")
-        case .normal:
-            return pkmnLocalizedString("TypeEfficacyNormal")
-        case .resistant, .doubleResistant:
-            return pkmnLocalizedString("TypeEfficacyNotVeryEffective")
-        case .immune:
-            return pkmnLocalizedString("TypeEfficacyNoEffect")
-        }
-    }
-    
     var multiplierDisplayString: String {
         return "x\(multiplierString)"
     }
@@ -53,35 +40,25 @@ extension PokemonTypeCheckerEfficacyCategoryViewModel {
     
     var tintColor: UIColor {
         switch category {
-        case .doubleEffective:
+        case .doubleEffective, .effective:
             return UIColor(hexValue: 0xDC143C)
-        case .effective:
-            return UIColor(hexValue: 0xF08080)
-        case .resistant:
-            return UIColor(hexValue: 0x6495ED)
-        case .doubleResistant:
+        case .resistant, .doubleResistant:
             return UIColor(hexValue: 0x4169E1)
         case .normal, .immune:
             return UIColor(hexValue: 0xA9A9A9)
         }
     }
     
-    var visualIndicatorWidthMultiplier: CGFloat {
-        let baseMultiplier: CGFloat = 0.5
-        
+    var multiplierFont: UIFont {
+        let fontSize: CGFloat = 17
+
         switch category {
         case .doubleEffective:
-            return baseMultiplier
+            return UIFont.systemFont(ofSize: fontSize, weight: .black)
         case .effective:
-            return baseMultiplier / 2
-        case .normal:
-            return 0
-        case .resistant:
-            return baseMultiplier / 4
-        case .doubleResistant:
-            return baseMultiplier / 8
-        case .immune:
-            return 0
+            return UIFont.systemFont(ofSize: fontSize, weight: .bold)
+        case .normal, .resistant, .doubleResistant, .immune:
+            return UIFont.systemFont(ofSize: fontSize, weight: .regular)
         }
     }
 }

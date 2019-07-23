@@ -18,6 +18,7 @@
 		02235C0E22D275B400F80AC6 /* LocalizationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02235C0D22D275B400F80AC6 /* LocalizationUtils.swift */; };
 		02235C2622E31A0500F80AC6 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02235C2822E31A0500F80AC6 /* Launch Screen.storyboard */; };
 		02235C2B22E31A2200F80AC6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 02235C2922E31A2200F80AC6 /* Localizable.strings */; };
+		02235C2F22E7964600F80AC6 /* PokemonTypeEfficacyCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02235C2E22E7964600F80AC6 /* PokemonTypeEfficacyCollectionViewLayout.swift */; };
 		025503BF22C6A2FB003D2149 /* UIColor+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025503BE22C6A2FB003D2149 /* UIColor+Custom.swift */; };
 		025503C122C6A374003D2149 /* PokemonTypeSelectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025503C022C6A374003D2149 /* PokemonTypeSelectionButton.swift */; };
 		025503C322C6A44E003D2149 /* Collection+SafeSubscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025503C222C6A44E003D2149 /* Collection+SafeSubscript.swift */; };
@@ -67,6 +68,7 @@
 		02235C2722E31A0500F80AC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Launch Screen.storyboard"; sourceTree = "<group>"; };
 		02235C2A22E31A2200F80AC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		02235C2C22E31C4A00F80AC6 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		02235C2E22E7964600F80AC6 /* PokemonTypeEfficacyCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTypeEfficacyCollectionViewLayout.swift; sourceTree = "<group>"; };
 		025503BE22C6A2FB003D2149 /* UIColor+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Custom.swift"; sourceTree = "<group>"; };
 		025503C022C6A374003D2149 /* PokemonTypeSelectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTypeSelectionButton.swift; sourceTree = "<group>"; };
 		025503C222C6A44E003D2149 /* Collection+SafeSubscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+SafeSubscript.swift"; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				0218413722C7B16D007E5336 /* PokemonTypeCheckerScenarioButton.swift */,
 				0218413C22C7C064007E5336 /* PokemonTypeEfficacyCollectionReusableView.swift */,
 				0218413A22C7C015007E5336 /* PokemonTypeEfficacyCollectionViewCell.swift */,
+				02235C2E22E7964600F80AC6 /* PokemonTypeEfficacyCollectionViewLayout.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 				0218413D22C7C064007E5336 /* PokemonTypeEfficacyCollectionReusableView.swift in Sources */,
 				025503C122C6A374003D2149 /* PokemonTypeSelectionButton.swift in Sources */,
 				02235C0E22D275B400F80AC6 /* LocalizationUtils.swift in Sources */,
+				02235C2F22E7964600F80AC6 /* PokemonTypeEfficacyCollectionViewLayout.swift in Sources */,
 				0218413822C7B16D007E5336 /* PokemonTypeCheckerScenarioButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -587,7 +591,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -643,7 +647,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -661,7 +665,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U2SEAYEHK7;
 				INFOPLIST_FILE = "$(SRCROOT)/Pkmn/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -681,7 +685,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U2SEAYEHK7;
 				INFOPLIST_FILE = "$(SRCROOT)/Pkmn/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
