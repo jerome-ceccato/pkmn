@@ -110,6 +110,9 @@ extension PokemonTypeCheckerViewModel {
         self.attackSelectorButton = attack
         self.defendSelectorButton = defend
         
+        attack.textLabel?.text = pkmnLocalizedString("TypeCheckerScenarioAttack")
+        defend.textLabel?.text = pkmnLocalizedString("TypeCheckerScenarioDefence")
+        
         defendSelectorButton.isSelected = true
         
         [attack, defend].forEach { button in

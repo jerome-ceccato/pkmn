@@ -15,19 +15,31 @@ class PokemonTypeSelectionButton: UIButton {
         self.init(type: .custom)
         
         self.type = type
-        backgroundColor = type.color()
-
-        setAttributedTitle(boldTitle(with: type.localizedName, color: .white), for: .normal)
         
         layer.cornerRadius = 8
         layer.shadowRadius = 1
         layer.shadowOffset = CGSize(width: 0, height: 3)
-        layer.shadowOpacity = 0.2
+
+        updateState(selected: false)
     }
     
-    private func boldTitle(with text: String, color: UIColor) -> NSAttributedString {
-        return NSAttributedString(string: text, attributes: [.font: UIFont.boldSystemFont(ofSize: 17),
-                                                             .foregroundColor: color])
+    private func updateState(selected: Bool) {
+        if (selected) {
+            backgroundColor = type.lightColor().withAlphaComponent(0.2)
+            layer.shadowOpacity = 0
+        } else {
+            backgroundColor = type.color()
+            layer.shadowOpacity = 0.2
+        }
+        setAttributedTitle(updatedAttributedTitle(selected: selected), for: .normal)
+    }
+    
+    private func updatedAttributedTitle(selected: Bool) -> NSAttributedString {
+        let fontWeight: UIFont.Weight = selected ? .black : .bold
+        let color: UIColor = selected ? type.darkColor().withAlphaComponent(0.6) : .white
+        
+        return NSAttributedString(string: type.localizedName, attributes: [.font: UIFont.systemFont(ofSize: 17, weight: fontWeight),
+                                                                           .foregroundColor: color])
     }
     
     override var isHighlighted: Bool {
@@ -53,11 +65,7 @@ class PokemonTypeSelectionButton: UIButton {
             }
             
             performStateTransitionAnimation {
-                if (self.isSelected) {
-                    self.alpha = 0.3
-                } else {
-                    self.alpha = 1
-                }
+                self.updateState(selected: self.isSelected)
             }
         }
     }

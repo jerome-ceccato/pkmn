@@ -51,6 +51,7 @@ extension PokemonTypeCheckerEfficacyCategoryViewModel {
     
     var multiplierFont: UIFont {
         let fontSize: CGFloat = 17
+        let smallerFontSize: CGFloat = 15
 
         switch category {
         case .doubleEffective:
@@ -58,7 +59,7 @@ extension PokemonTypeCheckerEfficacyCategoryViewModel {
         case .effective:
             return UIFont.systemFont(ofSize: fontSize, weight: .bold)
         case .normal, .resistant, .doubleResistant, .immune:
-            return UIFont.systemFont(ofSize: fontSize, weight: .regular)
+            return UIFont.systemFont(ofSize: smallerFontSize, weight: .regular)
         }
     }
 }

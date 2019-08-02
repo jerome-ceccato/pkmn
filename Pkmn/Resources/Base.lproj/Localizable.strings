@@ -2,6 +2,9 @@
 "TypeCheckerTitleDefence" = "Attacks effective against %@";
 "TypeCheckerCombinedTypes" = "%@ & %@";
 
+"TypeCheckerScenarioAttack" = "Attacking";
+"TypeCheckerScenarioDefence" = "Defending";
+
 "TypeEfficacySuperEffective" = "Super effective";
 "TypeEfficacyNormal" = "Normal";
 "TypeEfficacyNotVeryEffective" = "Not very effective";

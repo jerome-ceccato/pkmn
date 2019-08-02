@@ -57,8 +57,8 @@ private extension PokemonTypeEfficacyCheckerViewController {
 // Scenario
 extension PokemonTypeEfficacyCheckerViewController {
     func setupScenarios() {
-            viewModel.provideScenarioButtons(attack: attackSelectorButton,
-                                             defend: defendSelectorButton)
+        viewModel.provideScenarioButtons(attack: attackSelectorButton,
+                                         defend: defendSelectorButton)
     }
 }
 
