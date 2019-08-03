@@ -19,6 +19,7 @@
 		02235C2622E31A0500F80AC6 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02235C2822E31A0500F80AC6 /* Launch Screen.storyboard */; };
 		02235C2B22E31A2200F80AC6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 02235C2922E31A2200F80AC6 /* Localizable.strings */; };
 		02235C2F22E7964600F80AC6 /* PokemonTypeEfficacyCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02235C2E22E7964600F80AC6 /* PokemonTypeEfficacyCollectionViewLayout.swift */; };
+		02235C3922F6028200F80AC6 /* PokemonSpecies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02235C3822F6028200F80AC6 /* PokemonSpecies.swift */; };
 		025503BF22C6A2FB003D2149 /* UIColor+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025503BE22C6A2FB003D2149 /* UIColor+Custom.swift */; };
 		025503C122C6A374003D2149 /* PokemonTypeSelectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025503C022C6A374003D2149 /* PokemonTypeSelectionButton.swift */; };
 		025503C322C6A44E003D2149 /* Collection+SafeSubscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025503C222C6A44E003D2149 /* Collection+SafeSubscript.swift */; };
@@ -69,6 +70,7 @@
 		02235C2A22E31A2200F80AC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		02235C2C22E31C4A00F80AC6 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		02235C2E22E7964600F80AC6 /* PokemonTypeEfficacyCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTypeEfficacyCollectionViewLayout.swift; sourceTree = "<group>"; };
+		02235C3822F6028200F80AC6 /* PokemonSpecies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonSpecies.swift; sourceTree = "<group>"; };
 		025503BE22C6A2FB003D2149 /* UIColor+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Custom.swift"; sourceTree = "<group>"; };
 		025503C022C6A374003D2149 /* PokemonTypeSelectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTypeSelectionButton.swift; sourceTree = "<group>"; };
 		025503C222C6A44E003D2149 /* Collection+SafeSubscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+SafeSubscript.swift"; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 		028CD85B22C2AD9A005CDB3E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				02235C3822F6028200F80AC6 /* PokemonSpecies.swift */,
 				028CD85C22C2ADF5005CDB3E /* PokemonType.swift */,
 				02235C0822D271E500F80AC6 /* Language.swift */,
 			);
@@ -479,6 +482,7 @@
 				028CD85722C15A22005CDB3E /* Database.swift in Sources */,
 				028CD86322C40824005CDB3E /* PokemonTypeEfficacyCheckerViewController.swift in Sources */,
 				02235C0522D26F5100F80AC6 /* LocalizationData.swift in Sources */,
+				02235C3922F6028200F80AC6 /* PokemonSpecies.swift in Sources */,
 				0218413D22C7C064007E5336 /* PokemonTypeEfficacyCollectionReusableView.swift in Sources */,
 				025503C122C6A374003D2149 /* PokemonTypeSelectionButton.swift in Sources */,
 				02235C0E22D275B400F80AC6 /* LocalizationUtils.swift in Sources */,

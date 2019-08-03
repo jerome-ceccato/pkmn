@@ -43,4 +43,10 @@ extension Database {
     var numberOfPokemon: Int {
         return count(tableSpecies)
     }
+    
+    var species: [PokemonSpecies] {
+        return select(tableSpecies) { species in
+            PokemonSpecies(identifier: species[columnId], name: species[columnIdentifier])
+        }
+    }
 }

@@ -16,6 +16,7 @@ class DataProvider {
     }
     
     lazy var types: [PokemonType] = db.types
+    lazy var species: [PokemonSpecies] = db.species
     
     private lazy var typeEfficacy: [PokemonTypeEfficacy] = db.typeEfficacy
     
