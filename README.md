@@ -1,7 +1,7 @@
 # pkmn
 
 ### Resources
-[PokéAPI](https://pokeapi.co/)
+[PokéAPI](https://pokeapi.co/) ([github](https://github.com/PokeAPI/pokeapi))
 
 [veekun](https://veekun.com/dex)
 
