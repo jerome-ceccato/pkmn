@@ -65,9 +65,13 @@ extension PokemonTypeEfficacyCheckerViewController {
 // Results
 extension PokemonTypeEfficacyCheckerViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func setupResultsCollectionView() {
-        resultsCollectionView.register(PokemonTypeEfficacyCollectionReusableView.self,
+        resultsCollectionView.register(PokemonTypeEfficacyCollectionHeaderView.self,
                                        forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                                       withReuseIdentifier: String(describing: PokemonTypeEfficacyCollectionReusableView.self))
+                                       withReuseIdentifier: String(describing: PokemonTypeEfficacyCollectionHeaderView.self))
+        
+        resultsCollectionView.register(PokemonTypeEfficacyCollectionStaticFooterView.self,
+                                       forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
+                                       withReuseIdentifier: String(describing: PokemonTypeEfficacyCollectionStaticFooterView.self))
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -79,11 +83,19 @@ extension PokemonTypeEfficacyCheckerViewController: UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let reuseIdentifier = String(describing: PokemonTypeEfficacyCollectionReusableView.self)
-        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: reuseIdentifier, for: indexPath) as! PokemonTypeEfficacyCollectionReusableView
-        
-        headerView.configure(with: viewModel.headerViewModel(for: indexPath.section))
-        return headerView
+        if kind == UICollectionView.elementKindSectionHeader {
+            let reuseIdentifier = String(describing: PokemonTypeEfficacyCollectionHeaderView.self)
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: reuseIdentifier, for: indexPath) as! PokemonTypeEfficacyCollectionHeaderView
+            
+            headerView.configure(with: viewModel.headerViewModel(for: indexPath.section))
+            return headerView
+        } else {
+            let reuseIdentifier = String(describing: PokemonTypeEfficacyCollectionStaticFooterView.self)
+            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: reuseIdentifier, for: indexPath) as! PokemonTypeEfficacyCollectionStaticFooterView
+            
+            footerView.backgroundColor = UIColor.red
+            return footerView
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

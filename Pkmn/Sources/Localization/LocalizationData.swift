@@ -12,6 +12,7 @@ import SQLite
 class LocalizationData: DatabaseWrapper {
     let tableLanguages = Table("languages")
     let tableTypeNames = Table("type_names")
+    let tableSpeciesNames = Table("pokemon_species_names")
     
     let columnId = Expression<Int>("id")
     let columnIdentifier = Expression<String>("identifier")
@@ -33,6 +34,15 @@ extension LocalizationData {
 extension LocalizationData {
     func typeNames(for language: Language) -> [LocalizedItem] {
         return select(tableTypeNames.filter(columnLocaleId == language.identifier)) { item in
+            LocalizedItem(identifier: item[columnTypeId], localizedName: item[columnName])
+        }
+    }
+}
+
+// Species
+extension LocalizationData {
+    func speciesNames(for language: Language) -> [LocalizedItem] {
+        return select(tableSpeciesNames.filter(columnLocaleId == language.identifier)) { item in
             LocalizedItem(identifier: item[columnTypeId], localizedName: item[columnName])
         }
     }

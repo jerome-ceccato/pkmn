@@ -12,6 +12,7 @@ class PokemonTypeEfficacyCollectionViewLayout: UICollectionViewLayout {
     private var computedContentSize: CGSize = .zero
     private var cellAttributes = [IndexPath: UICollectionViewLayoutAttributes]()
     private var sectionHeaderAttributes = [Int: UICollectionViewLayoutAttributes]()
+    private var footerAttributes: UICollectionViewLayoutAttributes?
 
     private let contentInset = UIEdgeInsets(top: 6, left: 6, bottom: 6, right: 6)
     private let sectionSize = CGSize(width: 50, height: 30)
@@ -20,7 +21,9 @@ class PokemonTypeEfficacyCollectionViewLayout: UICollectionViewLayout {
     private let itemsPerRow = 4
     private let itemSpacing: CGFloat = 6
     private let lineSpacing: CGFloat = 0
-    
+    private let footerSpacing: CGFloat = 8
+    private let footerHeight: CGFloat = 50
+
     override func prepare() {
         guard let collectionView = collectionView else {
             return
@@ -29,6 +32,7 @@ class PokemonTypeEfficacyCollectionViewLayout: UICollectionViewLayout {
         computedContentSize = .zero
         cellAttributes.removeAll()
         sectionHeaderAttributes.removeAll()
+        footerAttributes = nil
         
         var currentOffset = CGPoint(x: contentInset.left, y: contentInset.top)
         let itemSize = computedCellSize()
@@ -36,7 +40,7 @@ class PokemonTypeEfficacyCollectionViewLayout: UICollectionViewLayout {
         for section in 0 ..< collectionView.numberOfSections {
             currentOffset.y += sectionOffsetY
             
-            let sectionAttributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind:UICollectionView.elementKindSectionHeader, with: IndexPath(item: 0, section: section))
+            let sectionAttributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, with: IndexPath(item: 0, section: section))
             
             sectionAttributes.frame = CGRect(origin: currentOffset, size: sectionSize)
 
@@ -65,7 +69,15 @@ class PokemonTypeEfficacyCollectionViewLayout: UICollectionViewLayout {
             sectionHeaderAttributes[section] = sectionAttributes
         }
 
-        currentOffset.y += itemSpacing + contentInset.bottom
+        currentOffset.y += itemSpacing + footerSpacing
+        
+        if collectionView.numberOfSections > 0 {
+            let offsetY = max(currentOffset.y, collectionView.bounds.height - footerHeight)
+            footerAttributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, with: IndexPath(index: 0))
+            footerAttributes?.frame = CGRect(x: 0, y: offsetY, width: collectionView.bounds.width, height: footerHeight)
+        }
+        
+        currentOffset.y += footerHeight + contentInset.bottom
         computedContentSize = CGSize(width: collectionView.bounds.width, height: currentOffset.y)
     }
     
@@ -98,6 +110,10 @@ class PokemonTypeEfficacyCollectionViewLayout: UICollectionViewLayout {
             }
         }
         
+        if let footerAttributes = footerAttributes, footerAttributes.frame.intersects(rect) {
+            attributeList.append(footerAttributes)
+        }
+
         return attributeList
     }
     
@@ -108,6 +124,8 @@ class PokemonTypeEfficacyCollectionViewLayout: UICollectionViewLayout {
     override func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         if elementKind == UICollectionView.elementKindSectionHeader {
             return sectionHeaderAttributes[indexPath.section]
+        } else if elementKind == UICollectionView.elementKindSectionFooter {
+            return footerAttributes
         }
         return nil
     }

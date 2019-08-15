@@ -14,6 +14,10 @@ func pkmnLocalized(typeName: PokemonType) -> String {
     return localizationGlobalProvider?.typeNames[typeName.identifier] ?? typeName.name
 }
 
+func pkmnLocalized(speciesName: PokemonSpecies) -> String {
+    return localizationGlobalProvider?.speciesNames[speciesName.identifier] ?? speciesName.name
+}
+
 // Global helpers
 
 func pkmnLocalizedString(_ content: String) -> String {

@@ -12,3 +12,10 @@ struct PokemonSpecies {
     let identifier: Int
     let name: String
 }
+
+// Localization
+extension PokemonSpecies {
+    var localizedName: String {
+        return pkmnLocalized(speciesName: self)
+    }
+}
