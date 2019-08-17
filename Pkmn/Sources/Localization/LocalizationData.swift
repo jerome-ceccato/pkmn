@@ -16,6 +16,7 @@ class LocalizationData: DatabaseWrapper {
     
     let columnId = Expression<Int>("id")
     let columnIdentifier = Expression<String>("identifier")
+    let columnSpeciesId = Expression<Int>("pokemon_species_id")
     let columnLocaleId = Expression<Int>("local_language_id")
     let columnTypeId = Expression<Int>("type_id")
     let columnName = Expression<String>("name")
@@ -43,7 +44,7 @@ extension LocalizationData {
 extension LocalizationData {
     func speciesNames(for language: Language) -> [LocalizedItem] {
         return select(tableSpeciesNames.filter(columnLocaleId == language.identifier)) { item in
-            LocalizedItem(identifier: item[columnTypeId], localizedName: item[columnName])
+            LocalizedItem(identifier: item[columnSpeciesId], localizedName: item[columnName])
         }
     }
 }

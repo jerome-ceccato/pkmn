@@ -13,12 +13,16 @@ class Database: DatabaseWrapper {
     let tableTypes = Table("types")
     let tableTypeEfficacy = Table("type_efficacy")
     let tableSpecies = Table("pokemon_species")
+    let tablePokemon = Table("pokemon")
+    let tableEvolutionChains = Table("evolution_chains")
     
     let columnId = Expression<Int>("id")
     let columnIdentifier = Expression<String>("identifier")
     let columnDamageTypeId = Expression<Int>("damage_type_id")
     let columnTargetTypeId = Expression<Int>("target_type_id")
     let columnDamageFactor = Expression<Int>("damage_factor")
+    let columnSpeciesId = Expression<Int>("species_id")
+    let columnEvolutionChainId = Expression<Int>("evolution_chain_id")
 }
 
 // Types
@@ -46,7 +50,26 @@ extension Database {
     
     var species: [PokemonSpecies] {
         return select(tableSpecies) { species in
-            PokemonSpecies(identifier: species[columnId], name: species[columnIdentifier])
+            PokemonSpecies(identifier: species[columnId],
+                           evolutionChainIdentifier: species[columnEvolutionChainId],
+                           name: species[columnIdentifier])
+        }
+    }
+}
+
+// Pokemon
+extension Database {
+    var evolutionChains: [Int] {
+        return select(tableEvolutionChains) { chain in
+            chain[columnId]
+        }
+    }
+
+    var pokemon: [Pokemon] {
+        return select(tablePokemon) { pokemon in
+            Pokemon(identifier: pokemon[columnId],
+                    speciesIdentifier: pokemon[columnSpeciesId],
+                    name: pokemon[columnIdentifier])
         }
     }
 }

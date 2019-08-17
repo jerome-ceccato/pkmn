@@ -28,13 +28,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         localizationGlobalProvider = localizationProvider
         
+        let typeEfficacyVC = pokemonTypeEfficacyController()
+        let pokedexVC = pokedexController()
+        
+        let tabBarController = UITabBarController()
+        tabBarController.setViewControllers([pokedexVC, typeEfficacyVC], animated: false)
+        
+        self.window = makeWindow(with: tabBarController)
+        
+        return true
+    }
+    
+    private func pokemonTypeEfficacyController() -> UIViewController {
         let viewModel = PokemonTypeCheckerViewModel(dataProvider: dataProvider)
         let rootController = PokemonTypeEfficacyCheckerViewController.create(viewModel: viewModel)!
         let navigationController = UINavigationController(rootViewController: rootController)
         
-        self.window = makeWindow(with: navigationController)
+        return navigationController
+    }
+    
+    private func pokedexController() -> UIViewController {
+        let viewModel = PokedexViewModel(dataProvider: dataProvider)
+        let rootController = PokedexViewController.create(viewModel: viewModel)!
+        let navigationController = UINavigationController(rootViewController: rootController)
         
-        return true
+        return navigationController
     }
     
     private func makeWindow(with rootController: UIViewController) -> UIWindow {

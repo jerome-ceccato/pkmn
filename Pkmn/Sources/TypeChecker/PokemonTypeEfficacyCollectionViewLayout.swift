@@ -69,15 +69,16 @@ class PokemonTypeEfficacyCollectionViewLayout: UICollectionViewLayout {
             sectionHeaderAttributes[section] = sectionAttributes
         }
 
-        currentOffset.y += itemSpacing + footerSpacing
+        currentOffset.y += itemSpacing // + footerSpacing
         
+        /*
         if collectionView.numberOfSections > 0 {
             let offsetY = max(currentOffset.y, collectionView.bounds.height - footerHeight)
             footerAttributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, with: IndexPath(index: 0))
             footerAttributes?.frame = CGRect(x: 0, y: offsetY, width: collectionView.bounds.width, height: footerHeight)
         }
-        
-        currentOffset.y += footerHeight + contentInset.bottom
+        */
+        currentOffset.y += /*footerHeight +*/ contentInset.bottom
         computedContentSize = CGSize(width: collectionView.bounds.width, height: currentOffset.y)
     }
     

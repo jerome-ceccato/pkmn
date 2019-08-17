@@ -17,7 +17,11 @@ class DataProvider {
     
     lazy var types: [PokemonType] = db.types
     lazy var species: [PokemonSpecies] = db.species
+    lazy var pokemon: [Pokemon] = db.pokemon
+    lazy var evolutionChains: [Int] = db.evolutionChains
     
+    // Type efficacy mapping
+
     private lazy var typeEfficacy: [PokemonTypeEfficacy] = db.typeEfficacy
     
     lazy var typeEfficacyAttackMapping: PokemonTypeEfficacyMapping = {
@@ -36,5 +40,23 @@ class DataProvider {
         }
         
         return PokemonTypeEfficacyMapping(mapping: mapping)
+    }()
+    
+    // Pokemon indexing
+    
+    lazy var speciesEvolutionChainMapping: [Int: [PokemonSpecies]] = {
+        var mapping = [Int: [PokemonSpecies]]()
+        species.forEach { item in
+            mapping[item.evolutionChainIdentifier, default: []].append(item)
+        }
+        return mapping
+    }()
+
+    lazy var pokemonSpeciesMapping: [Int: [Pokemon]] = {
+        var mapping = [Int: [Pokemon]]()
+        pokemon.forEach { item in
+            mapping[item.speciesIdentifier, default: []].append(item)
+        }
+        return mapping
     }()
 }

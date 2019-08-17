@@ -10,6 +10,7 @@ import UIKit
 
 struct PokemonSpecies {
     let identifier: Int
+    let evolutionChainIdentifier: Int
     let name: String
 }
 
