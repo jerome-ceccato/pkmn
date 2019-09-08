@@ -24,6 +24,7 @@ class PokedexViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.title = pkmnLocalizedString("TabBarTitlePokedex")
         contentTableView.reloadData()
     }
 }

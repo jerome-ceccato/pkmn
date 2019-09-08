@@ -19,6 +19,7 @@ class DataProvider {
     lazy var species: [PokemonSpecies] = db.species
     lazy var pokemon: [Pokemon] = db.pokemon
     lazy var evolutionChains: [Int] = db.evolutionChains
+    lazy var forms: [PokemonForm] = db.forms
     
     // Type efficacy mapping
 
@@ -56,6 +57,14 @@ class DataProvider {
         var mapping = [Int: [Pokemon]]()
         pokemon.forEach { item in
             mapping[item.speciesIdentifier, default: []].append(item)
+        }
+        return mapping
+    }()
+    
+    lazy var pokemonFormMapping: [Int: [PokemonForm]] = {
+        var mapping = [Int: [PokemonForm]]()
+        forms.forEach { item in
+            mapping[item.pokemonIdentifier, default: []].append(item)
         }
         return mapping
     }()

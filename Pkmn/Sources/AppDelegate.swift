@@ -13,48 +13,16 @@ import SQLite
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
-    let databaseFilename = "db"
-    lazy var dbHandler: Connection = {
-        let path = Bundle.main.path(forResource: databaseFilename, ofType: "sqlite3")!
-        return try! Connection(path, readonly: true)
-    }()
-    lazy var database: Database = Database(handler: dbHandler)
-    lazy var dataProvider: DataProvider = DataProvider(db: database)
-    lazy var localizationData: LocalizationData = LocalizationData(handler: dbHandler)
-    lazy var localizationProvider: PokemonLocalization = PokemonLocalization(db: localizationData)
+    var mainController: MainController!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        localizationGlobalProvider = localizationProvider
-        
-        let typeEfficacyVC = pokemonTypeEfficacyController()
-        let pokedexVC = pokedexController()
-        
-        let tabBarController = UITabBarController()
-        tabBarController.setViewControllers([pokedexVC, typeEfficacyVC], animated: false)
-        
-        self.window = makeWindow(with: tabBarController)
+        mainController = MainController()
+        self.window = makeWindow(with: mainController.setupApplicationRootController())
         
         return true
     }
-    
-    private func pokemonTypeEfficacyController() -> UIViewController {
-        let viewModel = PokemonTypeCheckerViewModel(dataProvider: dataProvider)
-        let rootController = PokemonTypeEfficacyCheckerViewController.create(viewModel: viewModel)!
-        let navigationController = UINavigationController(rootViewController: rootController)
-        
-        return navigationController
-    }
-    
-    private func pokedexController() -> UIViewController {
-        let viewModel = PokedexViewModel(dataProvider: dataProvider)
-        let rootController = PokedexViewController.create(viewModel: viewModel)!
-        let navigationController = UINavigationController(rootViewController: rootController)
-        
-        return navigationController
-    }
-    
+
     private func makeWindow(with rootController: UIViewController) -> UIWindow {
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.rootViewController = rootController

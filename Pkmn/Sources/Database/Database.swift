@@ -15,6 +15,7 @@ class Database: DatabaseWrapper {
     let tableSpecies = Table("pokemon_species")
     let tablePokemon = Table("pokemon")
     let tableEvolutionChains = Table("evolution_chains")
+    let tableForms = Table("pokemon_forms")
     
     let columnId = Expression<Int>("id")
     let columnIdentifier = Expression<String>("identifier")
@@ -23,6 +24,8 @@ class Database: DatabaseWrapper {
     let columnDamageFactor = Expression<Int>("damage_factor")
     let columnSpeciesId = Expression<Int>("species_id")
     let columnEvolutionChainId = Expression<Int>("evolution_chain_id")
+    let columnFormIdentifier = Expression<String?>("form_identifier")
+    let columnPokemonId = Expression<Int>("pokemon_id")
 }
 
 // Types
@@ -70,6 +73,18 @@ extension Database {
             Pokemon(identifier: pokemon[columnId],
                     speciesIdentifier: pokemon[columnSpeciesId],
                     name: pokemon[columnIdentifier])
+        }
+    }
+}
+
+// Forms
+extension Database {
+    var forms: [PokemonForm] {
+        return select(tableForms) { form in
+            PokemonForm(identifier: form[columnId],
+                        pokemonIdentifier: form[columnPokemonId],
+                        name: form[columnIdentifier],
+                        formIdentifier: form[columnFormIdentifier] ?? "")
         }
     }
 }

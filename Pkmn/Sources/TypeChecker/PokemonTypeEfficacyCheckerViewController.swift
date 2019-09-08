@@ -39,7 +39,7 @@ class PokemonTypeEfficacyCheckerViewController: UIViewController {
 extension PokemonTypeEfficacyCheckerViewController: PokemonTypeCheckerViewModelDelegate {
     func viewModelDidUpdate() {
         resultsCollectionView.reloadData()
-        title = viewModel.title
+        navigationItem.title = viewModel.title
     }
 }
 

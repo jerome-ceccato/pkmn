@@ -16,7 +16,7 @@ class PokedexBaseTableViewCell: UITableViewCell {
         if pokedexEntry.species.identifier == pokedexEntry.pokemon.identifier {
             nameLabel.text = pokedexEntry.species.localizedName
         } else {
-            nameLabel.text = "hummmm"
+            nameLabel.text = "???"
         }
         pictureImageView.image = UIImage(named: "\(pokedexEntry.pokemon.identifier)")
     }

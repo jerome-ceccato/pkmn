@@ -1,3 +1,6 @@
+"TabBarTitlePokedex" = "Pokédex";
+"TabBarTitleTypes" = "Types";
+
 "TypeCheckerTitleAttack" = "%@ est efficace contre";
 "TypeCheckerTitleDefence" = "Attaques efficaces contre %@";
 "TypeCheckerCombinedTypes" = "%@ & %@";

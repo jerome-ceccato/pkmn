@@ -12,6 +12,7 @@ import Foundation
 struct PokedexEntry {
     let pokemon: Pokemon
     let species: PokemonSpecies
+    let forms: [PokemonForm]
 }
 
 // An evolution chain
@@ -26,7 +27,9 @@ struct PokedexSection {
         self.species = dataProvider.speciesEvolutionChainMapping[chainIdentifier] ?? []
         let pokemonEntries: [[PokedexEntry]] = self.species.map({ item in
             let allPokemon: [Pokemon] = dataProvider.pokemonSpeciesMapping[item.identifier] ?? []
-            return allPokemon.map({ pokemon in PokedexEntry(pokemon: pokemon, species: item) })
+            return allPokemon.map({ pokemon in PokedexEntry(pokemon: pokemon,
+                                                            species: item,
+                                                            forms: dataProvider.pokemonFormMapping[pokemon.identifier] ?? []) })
         })
         self.entries = pokemonEntries.flatMap { $0 }
     }
