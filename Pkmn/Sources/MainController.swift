@@ -11,9 +11,9 @@ import SQLite
 
 class MainController: NSObject {
     
-    let databaseFilename = "db"
+    let databaseFilename = "pokedex"
     lazy var dbHandler: Connection = {
-        let path = Bundle.main.path(forResource: databaseFilename, ofType: "sqlite3")!
+        let path = Bundle.main.path(forResource: databaseFilename, ofType: "sqlite")!
         return try! Connection(path, readonly: true)
     }()
     lazy var database: Database = Database(handler: dbHandler)

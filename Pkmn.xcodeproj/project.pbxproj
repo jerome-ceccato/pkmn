@@ -45,6 +45,7 @@
 		0290568023083F6300A5A269 /* PokedexViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0290567F23083F6300A5A269 /* PokedexViewController.storyboard */; };
 		029056822309419900A5A269 /* PokemonForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029056812309419900A5A269 /* PokemonForm.swift */; };
 		02905684232544A300A5A269 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02905683232544A300A5A269 /* MainController.swift */; };
+		029056862332458800A5A269 /* pokedex.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 029056852332458800A5A269 /* pokedex.sqlite */; };
 		29425C212D9BA3BBAF2FB236 /* Pods_All_Pkmn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE4607EB0544580219E37D1C /* Pods_All_Pkmn.framework */; };
 /* End PBXBuildFile section */
 
@@ -111,6 +112,7 @@
 		0290567F23083F6300A5A269 /* PokedexViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PokedexViewController.storyboard; sourceTree = "<group>"; };
 		029056812309419900A5A269 /* PokemonForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonForm.swift; sourceTree = "<group>"; };
 		02905683232544A300A5A269 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		029056852332458800A5A269 /* pokedex.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = pokedex.sqlite; path = pkmndb/data/pokedex.sqlite; sourceTree = SOURCE_ROOT; };
 		5BCF5818717F7E05F6710F16 /* Pods-All-Pkmn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-All-Pkmn.release.xcconfig"; path = "Target Support Files/Pods-All-Pkmn/Pods-All-Pkmn.release.xcconfig"; sourceTree = "<group>"; };
 		84A1C425226C6BC24597EB02 /* Pods-All-Pkmn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-All-Pkmn.debug.xcconfig"; path = "Target Support Files/Pods-All-Pkmn/Pods-All-Pkmn.debug.xcconfig"; sourceTree = "<group>"; };
 		DE4607EB0544580219E37D1C /* Pods_All_Pkmn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_All_Pkmn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -219,6 +221,7 @@
 		028CD84022C15362005CDB3E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				029056852332458800A5A269 /* pokedex.sqlite */,
 				0290566F22F60BD000A5A269 /* Pokemon.xcassets */,
 				028CD84122C15362005CDB3E /* Assets.xcassets */,
 				02235C2922E31A2200F80AC6 /* Localizable.strings */,
@@ -444,6 +447,7 @@
 				028CD87122C41406005CDB3E /* PokemonTypeEfficacyCheckerViewController.storyboard in Resources */,
 				0290568023083F6300A5A269 /* PokedexViewController.storyboard in Resources */,
 				028CD84B22C15363005CDB3E /* Assets.xcassets in Resources */,
+				029056862332458800A5A269 /* pokedex.sqlite in Resources */,
 				028CD85222C1556B005CDB3E /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

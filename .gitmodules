@@ -1,0 +1,3 @@
+[submodule "pkmndb"]
+	path = pkmndb
+	url = https://github.com/jerome-ceccato/pkmndb
