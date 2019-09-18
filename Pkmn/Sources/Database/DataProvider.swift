@@ -43,9 +43,19 @@ class DataProvider {
         return PokemonTypeEfficacyMapping(mapping: mapping)
     }()
     
+    // Pokemon flat indexing
+    
+    lazy var speciesIdMapping: [Int: PokemonSpecies] = {
+        var mapping = [Int: PokemonSpecies]()
+        species.forEach { item in
+            mapping[item.identifier] = item
+        }
+        return mapping
+    }()
+    
     // Pokemon indexing
     
-    lazy var speciesEvolutionChainMapping: [Int: [PokemonSpecies]] = {
+    lazy var speciesFromEvolutionChainMapping: [Int: [PokemonSpecies]] = {
         var mapping = [Int: [PokemonSpecies]]()
         species.forEach { item in
             mapping[item.evolutionChainIdentifier, default: []].append(item)
@@ -53,15 +63,15 @@ class DataProvider {
         return mapping
     }()
 
-    lazy var pokemonSpeciesMapping: [Int: [Pokemon]] = {
+    lazy var pokemonFromSpeciesMapping: [Int: [Pokemon]] = {
         var mapping = [Int: [Pokemon]]()
         pokemon.forEach { item in
             mapping[item.speciesIdentifier, default: []].append(item)
         }
         return mapping
     }()
-    
-    lazy var pokemonFormMapping: [Int: [PokemonForm]] = {
+
+    lazy var formFromPokemonMapping: [Int: [PokemonForm]] = {
         var mapping = [Int: [PokemonForm]]()
         forms.forEach { item in
             mapping[item.pokemonIdentifier, default: []].append(item)

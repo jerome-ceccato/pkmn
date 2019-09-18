@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PokedexBaseCollectionViewCell: UICollectionViewCell {
+class PokedexRowCollectionViewCell: UICollectionViewCell, PokedexCollectionCell {
     @IBOutlet var pictureImageView: UIImageView!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var formLabel: UILabel!

@@ -26,6 +26,26 @@ class PokedexViewController: UIViewController {
         
         navigationItem.title = pkmnLocalizedString("TabBarTitlePokedex")
         contentCollectionView.reloadData()
+        
+        addTemporarySwitchButton()
+    }
+    
+    func addTemporarySwitchButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh,
+                                                            target: self,
+                                                            action: #selector(self.toggleDisplayStyle))
+    }
+    
+    @objc func toggleDisplayStyle() {
+        switch viewModel.displayStyle {
+        case .table:
+            viewModel.displayStyle = .imageCollection
+        case .imageCollection:
+            viewModel.displayStyle = .table
+        }
+        
+        contentCollectionView.collectionViewLayout.invalidateLayout()
+        contentCollectionView.reloadData()
     }
 }
 
@@ -40,9 +60,11 @@ extension PokedexViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: viewModel.entryCellIdentifier(at: indexPath),
-                                                      for: indexPath) as! PokedexBaseCollectionViewCell
+                                                      for: indexPath)
         
-        cell.configure(with: viewModel.pokedexEntry(at: indexPath))
+        if let contentCell = cell as? PokedexCollectionCell {
+            contentCell.configure(with: viewModel.pokedexEntry(at: indexPath))
+        }
 
         return cell
     }
@@ -52,7 +74,7 @@ extension PokedexViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.size.width, height: 44)
+        return viewModel.cellSize(at: indexPath, in: collectionView)
     }
 }
 

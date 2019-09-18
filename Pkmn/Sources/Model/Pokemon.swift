@@ -12,4 +12,6 @@ struct Pokemon {
     let identifier: Int
     let speciesIdentifier: Int
     let name: String
+    
+    let isDefault: Bool
 }

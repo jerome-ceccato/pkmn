@@ -12,36 +12,41 @@ import Foundation
 struct PokedexEntry {
     let pokemon: Pokemon
     let species: PokemonSpecies
+    let defaultForm: PokemonForm
     let forms: [PokemonForm]
 }
 
-// An evolution chain
-struct PokedexSection {
-    let chainIdentifier: Int
-    let species: [PokemonSpecies]
+// All the pokedex
+class PokedexEntries {
     let entries: [PokedexEntry]
-    
-    init(dataProvider: DataProvider, chainIdentifier: Int) {
-        self.chainIdentifier = chainIdentifier
-        
-        self.species = dataProvider.speciesEvolutionChainMapping[chainIdentifier] ?? []
-        let pokemonEntries: [[PokedexEntry]] = self.species.map({ item in
-            let allPokemon: [Pokemon] = dataProvider.pokemonSpeciesMapping[item.identifier] ?? []
-            return allPokemon.map({ pokemon in PokedexEntry(pokemon: pokemon,
-                                                            species: item,
-                                                            forms: dataProvider.pokemonFormMapping[pokemon.identifier] ?? []) })
-        })
-        self.entries = pokemonEntries.flatMap { $0 }
+
+    init(dataProvider: DataProvider) {
+        entries = dataProvider.pokemon.compactMap({ pokemon in
+            if let species = dataProvider.speciesIdMapping[pokemon.speciesIdentifier],
+                let forms = dataProvider.formFromPokemonMapping[pokemon.identifier],
+                let defaultForm = forms.first(where: { $0.isDefault }) {
+                let entry = PokedexEntry(pokemon: pokemon,
+                                         species: species,
+                                         defaultForm: defaultForm,
+                                         forms: forms)
+
+                if (PokedexEntries.shouldBeIncluded(entry: entry)) {
+                    return entry
+                }
+            }
+            return nil
+        }).sorted(by: { (a, b) in a.defaultForm.order < b.defaultForm.order })
     }
 }
 
-// All the grouped pokedex
-class PokedexEntries {
-    let sections: [PokedexSection]
-
-    init(dataProvider: DataProvider) {
-        self.sections = dataProvider.evolutionChains.map { chainId in
-            PokedexSection(dataProvider: dataProvider, chainIdentifier: chainId)
+// Utils
+private extension PokedexEntries {
+    static func shouldBeIncluded(entry: PokedexEntry) -> Bool {
+        if (entry.pokemon.isDefault) {
+            return true
+        } else if entry.defaultForm.isMega {
+            return true
         }
+        return false
     }
 }

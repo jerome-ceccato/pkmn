@@ -13,6 +13,10 @@ struct PokemonForm {
     let pokemonIdentifier: Int
     let name: String
     let formIdentifier: String
+    
+    let isDefault: Bool
+    let isMega: Bool
+    let order: Int
 }
 
 // Localization

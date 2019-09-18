@@ -16,6 +16,16 @@ class PokedexEntryViewModel {
     }
 }
 
+private extension PokedexEntryViewModel {
+    var resourceIdentifier: String {
+        if entry.pokemon.isDefault {
+            return "\(entry.pokemon.identifier)"
+        } else {
+            return "\(entry.species.identifier)-\(entry.defaultForm.formIdentifier)"
+        }
+    }
+}
+
 extension PokedexEntryViewModel {
     var name: String {
         return entry.species.localizedName
@@ -32,13 +42,10 @@ extension PokedexEntryViewModel {
     }
     
     var iconImage: UIImage? {
-        if let image = UIImage(named: "icon-\(entry.pokemon.identifier)") {
-            return image
-        } else if let form = entry.forms.first,
-            let image = UIImage(named: "icon-\(entry.species.identifier)-\(form.formIdentifier)") {
-            return image
-        } else {
-            return nil
-        }
+        return UIImage(named: "icon-\(resourceIdentifier)")
+    }
+    
+    var mainImage: UIImage? {
+        return UIImage(named: "main-\(resourceIdentifier)")
     }
 }

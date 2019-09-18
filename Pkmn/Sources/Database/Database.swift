@@ -26,6 +26,9 @@ class Database: DatabaseWrapper {
     let columnEvolutionChainId = Expression<Int>("evolution_chain_id")
     let columnFormIdentifier = Expression<String?>("form_identifier")
     let columnPokemonId = Expression<Int>("pokemon_id")
+    let columnIsDefault = Expression<Bool>("is_default")
+    let columnIsMega = Expression<Bool>("is_mega")
+    let columnOrder = Expression<Int>("order")
 }
 
 // Types
@@ -72,7 +75,8 @@ extension Database {
         return select(tablePokemon) { pokemon in
             Pokemon(identifier: pokemon[columnId],
                     speciesIdentifier: pokemon[columnSpeciesId],
-                    name: pokemon[columnIdentifier])
+                    name: pokemon[columnIdentifier],
+                    isDefault: pokemon[columnIsDefault])
         }
     }
 }
@@ -84,7 +88,10 @@ extension Database {
             PokemonForm(identifier: form[columnId],
                         pokemonIdentifier: form[columnPokemonId],
                         name: form[columnIdentifier],
-                        formIdentifier: form[columnFormIdentifier] ?? "")
+                        formIdentifier: form[columnFormIdentifier] ?? "",
+                        isDefault: form[columnIsDefault],
+                        isMega: form[columnIsMega],
+                        order: form[columnOrder])
         }
     }
 }

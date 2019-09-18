@@ -28,7 +28,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="2"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PokedexBaseCollectionViewCell" id="2P3-EN-O37" customClass="PokedexBaseCollectionViewCell" customModule="Pkmn" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PokedexRowCollectionViewCell" id="2P3-EN-O37" customClass="PokedexRowCollectionViewCell" customModule="Pkmn" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -87,6 +87,29 @@
                                             <outlet property="pictureImageView" destination="0n7-uO-Lb1" id="fmD-1z-r6J"/>
                                         </connections>
                                     </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PokedexLargeImageCollectionViewCell" id="kSo-2G-B0S" customClass="PokedexLargeImageCollectionViewCell" customModule="Pkmn" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aJz-xi-pbF">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="aJz-xi-pbF" firstAttribute="top" secondItem="kSo-2G-B0S" secondAttribute="top" id="bcs-LF-LjP"/>
+                                            <constraint firstAttribute="bottom" secondItem="aJz-xi-pbF" secondAttribute="bottom" id="eTD-t4-o3y"/>
+                                            <constraint firstItem="aJz-xi-pbF" firstAttribute="leading" secondItem="kSo-2G-B0S" secondAttribute="leading" id="syo-u8-qIX"/>
+                                            <constraint firstAttribute="trailing" secondItem="aJz-xi-pbF" secondAttribute="trailing" id="y7I-Vu-MNz"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="pictureImageView" destination="aJz-xi-pbF" id="aMM-u8-dYg"/>
+                                        </connections>
+                                    </collectionViewCell>
                                 </cells>
                                 <connections>
                                     <outlet property="dataSource" destination="ySr-y9-Ar9" id="3kR-U6-y2k"/>
@@ -109,7 +132,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6ST-bh-kI3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="68" y="116.49175412293854"/>
+            <point key="canvasLocation" x="-186" y="86"/>
         </scene>
     </scenes>
 </document>
