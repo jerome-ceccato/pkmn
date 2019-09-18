@@ -1,6 +1,0 @@
-[submodule "submodules/pokemon-database"]
-	path = submodules/pokemon-database
-	url = https://github.com/cmmartti/pokemon-database.git
-[submodule "submodules/pokeapi"]
-	path = submodules/pokeapi
-	url = https://github.com/PokeAPI/pokeapi.git

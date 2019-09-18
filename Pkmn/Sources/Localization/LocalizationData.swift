@@ -22,7 +22,7 @@ class LocalizationData: DatabaseWrapper {
     let columnTypeId = Expression<Int>("type_id")
     let columnName = Expression<String>("name")
     let columnFormId = Expression<Int>("pokemon_form_id")
-    let columnFormName = Expression<String>("form_name")
+    let columnFormName = Expression<String?>("form_name")
 }
 
 // Languages
@@ -56,7 +56,7 @@ extension LocalizationData {
 extension LocalizationData {
     func formNames(for language: Language) -> [LocalizedItem] {
         return select(tableFormNames.filter(columnLocaleId == language.identifier)) { item in
-            LocalizedItem(identifier: item[columnFormId], localizedName: item[columnFormName])
+            LocalizedItem(identifier: item[columnFormId], localizedName: item[columnFormName] ?? "")
         }
     }
 }

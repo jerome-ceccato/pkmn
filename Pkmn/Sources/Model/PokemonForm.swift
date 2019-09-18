@@ -14,3 +14,10 @@ struct PokemonForm {
     let name: String
     let formIdentifier: String
 }
+
+// Localization
+extension PokemonForm {
+    var localizedName: String {
+        return pkmnLocalized(formName: self)
+    }
+}

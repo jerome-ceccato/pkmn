@@ -31,6 +31,6 @@ extension PokedexViewModel {
     }
     
     func entryCellIdentifier(at indexPath: IndexPath) -> String {
-        return String(describing: PokedexBaseTableViewCell.self)
+        return String(describing: PokedexBaseCollectionViewCell.self)
     }
 }

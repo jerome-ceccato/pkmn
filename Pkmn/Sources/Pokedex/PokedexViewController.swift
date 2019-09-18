@@ -19,28 +19,28 @@ class PokedexViewController: UIViewController {
         return nil
     }
 
-    @IBOutlet var contentTableView: UITableView!
+    @IBOutlet var contentCollectionView: UICollectionView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.title = pkmnLocalizedString("TabBarTitlePokedex")
-        contentTableView.reloadData()
+        contentCollectionView.reloadData()
     }
 }
 
-extension PokedexViewController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
+extension PokedexViewController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return viewModel.numberOfSections()
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.numberOfItems(for: section)
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.entryCellIdentifier(at: indexPath),
-                                                 for: indexPath) as! PokedexBaseTableViewCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: viewModel.entryCellIdentifier(at: indexPath),
+                                                      for: indexPath) as! PokedexBaseCollectionViewCell
         
         cell.configure(with: viewModel.pokedexEntry(at: indexPath))
 
@@ -48,6 +48,14 @@ extension PokedexViewController: UITableViewDataSource {
     }
 }
 
-extension PokedexViewController: UITableViewDelegate {
+extension PokedexViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.bounds.size.width, height: 64)
+    }
+}
+
+extension PokedexViewController: UICollectionViewDelegate {
     
 }
