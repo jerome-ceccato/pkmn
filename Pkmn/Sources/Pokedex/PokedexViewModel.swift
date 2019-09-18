@@ -26,8 +26,9 @@ extension PokedexViewModel {
         return pokedexData.sections[section].entries.count
     }
     
-    func pokedexEntry(at indexPath: IndexPath) -> PokedexEntry {
-        return pokedexData.sections[indexPath.section].entries[indexPath.row]
+    func pokedexEntry(at indexPath: IndexPath) -> PokedexEntryViewModel {
+        let entry = pokedexData.sections[indexPath.section].entries[indexPath.row]
+        return PokedexEntryViewModel(entry: entry)
     }
     
     func entryCellIdentifier(at indexPath: IndexPath) -> String {

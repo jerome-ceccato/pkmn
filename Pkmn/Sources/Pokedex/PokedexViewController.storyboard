@@ -22,38 +22,39 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="5DL-oW-NnH">
-                                    <size key="itemSize" width="375" height="64"/>
+                                    <size key="itemSize" width="375" height="44"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="20"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="2"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PokedexBaseCollectionViewCell" id="2P3-EN-O37" customClass="PokedexBaseCollectionViewCell" customModule="Pkmn" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0n7-uO-Lb1">
-                                                    <rect key="frame" x="8" y="4" width="56" height="56"/>
+                                                    <rect key="frame" x="8" y="7" width="40" height="30"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="0n7-uO-Lb1" secondAttribute="height" multiplier="1:1" id="sfa-2G-WJK"/>
+                                                        <constraint firstAttribute="width" constant="40" id="Dah-v1-dX8"/>
+                                                        <constraint firstAttribute="height" constant="30" id="fKs-d7-Ek7"/>
                                                     </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M0O-hH-JHi" userLabel="Content">
-                                                    <rect key="frame" x="72" y="12.5" width="295" height="39.5"/>
+                                                    <rect key="frame" x="56" y="3" width="311" height="38.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AkT-Mj-d9K">
-                                                            <rect key="frame" x="0.0" y="0.0" width="295" height="21.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="311" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Form?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yeJ-xx-3zG">
-                                                            <rect key="frame" x="0.0" y="21.5" width="295" height="18"/>
+                                                            <rect key="frame" x="0.0" y="20.5" width="311" height="18"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -70,13 +71,13 @@
                                                 </view>
                                             </subviews>
                                         </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="M0O-hH-JHi" secondAttribute="bottom" constant="4" id="2jh-Be-yFM"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="M0O-hH-JHi" secondAttribute="bottom" constant="2" id="2jh-Be-yFM"/>
                                             <constraint firstAttribute="trailing" secondItem="M0O-hH-JHi" secondAttribute="trailing" constant="8" id="CfP-86-f2P"/>
                                             <constraint firstItem="M0O-hH-JHi" firstAttribute="leading" secondItem="0n7-uO-Lb1" secondAttribute="trailing" constant="8" id="IPP-3Q-AxY"/>
-                                            <constraint firstItem="M0O-hH-JHi" firstAttribute="top" relation="greaterThanOrEqual" secondItem="2P3-EN-O37" secondAttribute="top" constant="4" id="PhP-uO-geW"/>
-                                            <constraint firstAttribute="bottom" secondItem="0n7-uO-Lb1" secondAttribute="bottom" constant="4" id="YoX-ao-gyE"/>
-                                            <constraint firstItem="0n7-uO-Lb1" firstAttribute="top" secondItem="2P3-EN-O37" secondAttribute="top" constant="4" id="eag-cj-6Pl"/>
+                                            <constraint firstItem="0n7-uO-Lb1" firstAttribute="centerY" secondItem="2P3-EN-O37" secondAttribute="centerY" id="MYG-O1-HjH"/>
+                                            <constraint firstItem="M0O-hH-JHi" firstAttribute="top" relation="greaterThanOrEqual" secondItem="2P3-EN-O37" secondAttribute="top" constant="2" id="PhP-uO-geW"/>
                                             <constraint firstItem="M0O-hH-JHi" firstAttribute="centerY" secondItem="2P3-EN-O37" secondAttribute="centerY" id="jvV-Hp-UoB"/>
                                             <constraint firstItem="0n7-uO-Lb1" firstAttribute="leading" secondItem="2P3-EN-O37" secondAttribute="leading" constant="8" id="tZl-aw-YFJ"/>
                                         </constraints>
