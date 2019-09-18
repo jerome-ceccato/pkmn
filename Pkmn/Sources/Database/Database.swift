@@ -31,7 +31,7 @@ class Database: DatabaseWrapper {
 // Types
 extension Database {
     var types: [PokemonType] {
-        return select(tableTypes.filter(columnId < 10000)) { type in
+        return select(tableTypes) { type in
             PokemonType(identifier: type[columnId], name: type[columnIdentifier])
         }
     }
