@@ -37,14 +37,14 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MQG-H1-m7Q">
-                                                    <rect key="frame" x="52" y="14.5" width="27.5" height="15"/>
+                                                    <rect key="frame" x="54" y="14.5" width="27.5" height="15"/>
                                                     <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="15"/>
                                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AkT-Mj-d9K">
-                                                    <rect key="frame" x="83.5" y="11.5" width="248" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="87.5" y="10.5" width="244" height="23"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -59,8 +59,8 @@
                                             <constraints>
                                                 <constraint firstItem="0n7-uO-Lb1" firstAttribute="leading" secondItem="xWQ-oN-OSl" secondAttribute="leading" constant="8" id="4y6-Po-15T"/>
                                                 <constraint firstItem="u0K-ao-Fb9" firstAttribute="top" secondItem="xWQ-oN-OSl" secondAttribute="top" constant="8" id="5Fd-DL-YmH"/>
-                                                <constraint firstItem="AkT-Mj-d9K" firstAttribute="leading" secondItem="MQG-H1-m7Q" secondAttribute="trailing" constant="4" id="5Qj-2G-ZuT"/>
-                                                <constraint firstItem="MQG-H1-m7Q" firstAttribute="leading" secondItem="0n7-uO-Lb1" secondAttribute="trailing" constant="4" id="5XC-Dw-YN5"/>
+                                                <constraint firstItem="AkT-Mj-d9K" firstAttribute="leading" secondItem="MQG-H1-m7Q" secondAttribute="trailing" constant="6" id="5Qj-2G-ZuT"/>
+                                                <constraint firstItem="MQG-H1-m7Q" firstAttribute="leading" secondItem="0n7-uO-Lb1" secondAttribute="trailing" constant="6" id="5XC-Dw-YN5"/>
                                                 <constraint firstItem="AkT-Mj-d9K" firstAttribute="centerY" secondItem="xWQ-oN-OSl" secondAttribute="centerY" id="LSo-4V-l4o"/>
                                                 <constraint firstItem="u0K-ao-Fb9" firstAttribute="leading" secondItem="AkT-Mj-d9K" secondAttribute="trailing" constant="8" id="VM0-en-EkH"/>
                                                 <constraint firstAttribute="bottom" secondItem="u0K-ao-Fb9" secondAttribute="bottom" constant="8" id="hC0-gk-WdV"/>
