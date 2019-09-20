@@ -14,6 +14,8 @@ struct PokedexEntry {
     let species: PokemonSpecies
     let defaultForm: PokemonForm
     let forms: [PokemonForm]
+    
+    let types: PokemonTypes
 }
 
 // All the pokedex
@@ -24,11 +26,13 @@ class PokedexEntries {
         entries = dataProvider.pokemon.compactMap({ pokemon in
             if let species = dataProvider.speciesIdMapping[pokemon.speciesIdentifier],
                 let forms = dataProvider.formFromPokemonMapping[pokemon.identifier],
-                let defaultForm = forms.first(where: { $0.isDefault }) {
+                let defaultForm = forms.first(where: { $0.isDefault }),
+                let types = dataProvider.typesFromPokemonMapping[pokemon.identifier] {
                 let entry = PokedexEntry(pokemon: pokemon,
                                          species: species,
                                          defaultForm: defaultForm,
-                                         forms: forms)
+                                         forms: forms,
+                                         types: types)
 
                 if (PokedexEntries.shouldBeIncluded(entry: entry)) {
                     return entry

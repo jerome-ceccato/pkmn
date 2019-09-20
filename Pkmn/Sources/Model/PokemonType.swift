@@ -75,3 +75,14 @@ extension PokemonTypeEfficacy.Category {
         }
     }
 }
+
+struct PokemonTypes {
+    let primaryType: PokemonType
+    let secondaryType: PokemonType?
+}
+
+struct PokemonRawType {
+    let pokemonIdentifier: Int
+    let typeIdentifier: Int
+    let slot: Int
+}

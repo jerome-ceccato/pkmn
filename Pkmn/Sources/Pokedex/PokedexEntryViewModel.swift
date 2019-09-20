@@ -27,18 +27,22 @@ private extension PokedexEntryViewModel {
 }
 
 extension PokedexEntryViewModel {
-    var name: String {
-        return entry.species.localizedName
+    var pokedexNumber: String {
+        return String(format: "%03d", entry.species.identifier)
     }
-    
-    var subtitle: String {
+
+    var name: String {
         if entry.species.identifier == entry.pokemon.identifier {
-            return ""
+            return entry.species.localizedName
         } else if let form = entry.forms.first {
             return form.localizedName
         } else {
             return "???"
         }
+    }
+    
+    var types: PokemonTypes {
+        return entry.types
     }
     
     var iconImage: UIImage? {

@@ -20,6 +20,7 @@ class DataProvider {
     lazy var pokemon: [Pokemon] = db.pokemon
     lazy var evolutionChains: [Int] = db.evolutionChains
     lazy var forms: [PokemonForm] = db.forms
+    lazy var pokemonRawTypes: [PokemonRawType] = db.pokemonRawType
     
     // Type efficacy mapping
 
@@ -53,6 +54,14 @@ class DataProvider {
         return mapping
     }()
     
+    lazy var typesIdMapping: [Int: PokemonType] = {
+        var mapping = [Int: PokemonType]()
+        types.forEach { item in
+            mapping[item.identifier] = item
+        }
+        return mapping
+    }()
+    
     // Pokemon indexing
     
     lazy var speciesFromEvolutionChainMapping: [Int: [PokemonSpecies]] = {
@@ -75,6 +84,22 @@ class DataProvider {
         var mapping = [Int: [PokemonForm]]()
         forms.forEach { item in
             mapping[item.pokemonIdentifier, default: []].append(item)
+        }
+        return mapping
+    }()
+    
+    lazy var typesFromPokemonMapping: [Int: PokemonTypes] = {
+        var rawMapping = [Int: [Int : Int]]()
+        pokemonRawTypes.forEach { item in
+            rawMapping[item.pokemonIdentifier, default: [:]][item.slot] = item.typeIdentifier
+        }
+
+        var mapping = [Int: PokemonTypes]()
+        rawMapping.keys.forEach { key in
+            let firstTypeIdentifier = rawMapping[key]![1]!
+            let secondTypeIdentifier = rawMapping[key]![2]
+            mapping[key] = PokemonTypes(primaryType: typesIdMapping[firstTypeIdentifier]!,
+                                        secondaryType: secondTypeIdentifier.map({ typesIdMapping[$0]! }))
         }
         return mapping
     }()

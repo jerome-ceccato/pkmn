@@ -11,11 +11,13 @@ import UIKit
 class PokedexRowCollectionViewCell: UICollectionViewCell, PokedexCollectionCell {
     @IBOutlet var pictureImageView: UIImageView!
     @IBOutlet var nameLabel: UILabel!
-    @IBOutlet var formLabel: UILabel!
+    @IBOutlet var numberLabel: UILabel!
+    @IBOutlet var typesView: TypePokeballView!
 
     func configure(with viewModel: PokedexEntryViewModel) {
         nameLabel.text = viewModel.name
-        formLabel.text = viewModel.subtitle
+        numberLabel.text = viewModel.pokedexNumber
+        typesView.types = viewModel.types
         pictureImageView.image = viewModel.iconImage
     }
 }

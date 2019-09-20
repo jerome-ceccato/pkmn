@@ -16,6 +16,7 @@ class Database: DatabaseWrapper {
     let tablePokemon = Table("pokemon")
     let tableEvolutionChains = Table("evolution_chains")
     let tableForms = Table("pokemon_forms")
+    let tablePokemonTypes = Table("pokemon_types")
     
     let columnId = Expression<Int>("id")
     let columnIdentifier = Expression<String>("identifier")
@@ -29,6 +30,8 @@ class Database: DatabaseWrapper {
     let columnIsDefault = Expression<Bool>("is_default")
     let columnIsMega = Expression<Bool>("is_mega")
     let columnOrder = Expression<Int>("order")
+    let columnSlot = Expression<Int>("slot")
+    let columnTypeId = Expression<Int>("type_id")
 }
 
 // Types
@@ -77,6 +80,17 @@ extension Database {
                     speciesIdentifier: pokemon[columnSpeciesId],
                     name: pokemon[columnIdentifier],
                     isDefault: pokemon[columnIsDefault])
+        }
+    }
+}
+
+// Pokemon types
+extension Database {
+    var pokemonRawType: [PokemonRawType] {
+        return select(tablePokemonTypes) { types in
+            PokemonRawType(pokemonIdentifier: types[columnPokemonId],
+                           typeIdentifier: types[columnTypeId],
+                           slot: types[columnSlot])
         }
     }
 }
