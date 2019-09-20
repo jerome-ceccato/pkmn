@@ -1,5 +1,5 @@
 //
-//  PokedexBaseCollectionViewCell.swift
+//  PokedexTableViewCell.swift
 //  Pkmn
 //
 //  Created by Jerome Ceccato on 17/08/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PokedexRowCollectionViewCell: UICollectionViewCell, PokedexCollectionCell {
+class PokedexTableViewCell: UITableViewCell {
     @IBOutlet var pictureImageView: UIImageView!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var numberLabel: UILabel!

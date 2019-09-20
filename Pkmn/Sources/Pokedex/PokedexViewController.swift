@@ -19,65 +19,39 @@ class PokedexViewController: UIViewController {
         return nil
     }
 
-    @IBOutlet var contentCollectionView: UICollectionView!
+    @IBOutlet var contentTableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.title = pkmnLocalizedString("TabBarTitlePokedex")
-        contentCollectionView.reloadData()
-        
-        addTemporarySwitchButton()
-    }
-    
-    func addTemporarySwitchButton() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh,
-                                                            target: self,
-                                                            action: #selector(self.toggleDisplayStyle))
-    }
-    
-    @objc func toggleDisplayStyle() {
-        switch viewModel.displayStyle {
-        case .table:
-            viewModel.displayStyle = .imageCollection
-        case .imageCollection:
-            viewModel.displayStyle = .table
-        }
-        
-        contentCollectionView.collectionViewLayout.invalidateLayout()
-        contentCollectionView.reloadData()
+        contentTableView.reloadData()
     }
 }
 
-extension PokedexViewController: UICollectionViewDataSource {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+extension PokedexViewController: UITableViewDataSource, UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel.numberOfSections()
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfItems(for: section)
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: viewModel.entryCellIdentifier(at: indexPath),
-                                                      for: indexPath)
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return self.tableView(tableView, heightForRowAt: indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.entryCellIdentifier(at: indexPath),
+                                                 for: indexPath) as! PokedexTableViewCell
         
-        if let contentCell = cell as? PokedexCollectionCell {
-            contentCell.configure(with: viewModel.pokedexEntry(at: indexPath))
-        }
-
+        cell.configure(with: viewModel.pokedexEntry(at: indexPath))
+        
         return cell
     }
-}
-
-extension PokedexViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return viewModel.cellSize(at: indexPath, in: collectionView)
-    }
-}
-
-extension PokedexViewController: UICollectionViewDelegate {
-    
 }

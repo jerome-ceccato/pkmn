@@ -8,16 +8,9 @@
 
 import UIKit
 
-enum PokedexDisplayStyle {
-    case table
-    case imageCollection
-}
-
 class PokedexViewModel {
     private let dataProvider: DataProvider
     private lazy var pokedexData = PokedexEntries(dataProvider: dataProvider)
-    
-    var displayStyle = PokedexDisplayStyle.table
     
     init(dataProvider: DataProvider) {
         self.dataProvider = dataProvider
@@ -39,20 +32,6 @@ extension PokedexViewModel {
     }
     
     func entryCellIdentifier(at indexPath: IndexPath) -> String {
-        switch displayStyle {
-        case .table:
-            return String(describing: PokedexRowCollectionViewCell.self)
-        case .imageCollection:
-            return String(describing: PokedexLargeImageCollectionViewCell.self)
-        }
-    }
-
-    func cellSize(at indexPath: IndexPath, in collectionView: UICollectionView) -> CGSize {
-        switch displayStyle {
-        case .table:
-            return CGSize(width: collectionView.bounds.size.width, height: 44)
-        case .imageCollection:
-            return CGSize(width: 64, height: 64)
-        }
+        return String(describing: PokedexTableViewCell.self)
     }
 }
