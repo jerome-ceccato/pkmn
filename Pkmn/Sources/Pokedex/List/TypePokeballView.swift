@@ -24,16 +24,20 @@ class TypePokeballView: UIView {
         let width: CGFloat = 6
         context.setLineWidth(width)
         
-        drawArc(context: context, width: width, startAngle: 0, color: types.primaryType.color())
-        drawArc(context: context, width: width, startAngle: .pi, color: (types.secondaryType ?? types.primaryType).color())
+        if let secondaryType = types.secondaryType {
+            drawArc(context: context, width: width, from: 0, to: .pi, color: types.primaryType.color())
+            drawArc(context: context, width: width, from: .pi, to: .pi * 2, color: secondaryType.color())
+        } else {
+            drawArc(context: context, width: width, from: 0, to: .pi * 2, color: types.primaryType.color())
+        }
     }
     
-    private func drawArc(context: CGContext, width: CGFloat, startAngle: CGFloat, color: UIColor) {
+    private func drawArc(context: CGContext, width: CGFloat, from: CGFloat, to: CGFloat, color: UIColor) {
         let center = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
         let radius = (frame.size.width - (width * 2)) / 2
 
         color.set()
-        context.addArc(center: center, radius: radius, startAngle: startAngle, endAngle: startAngle + .pi, clockwise: true)
+        context.addArc(center: center, radius: radius, startAngle: from, endAngle: to, clockwise: true)
         context.strokePath()
     }
 }

@@ -17,6 +17,7 @@ class PokedexViewModel {
     }
 }
 
+// View controller
 extension PokedexViewModel {
     func numberOfSections() -> Int {
         return 1
@@ -33,5 +34,13 @@ extension PokedexViewModel {
     
     func entryCellIdentifier(at indexPath: IndexPath) -> String {
         return String(describing: PokedexTableViewCell.self)
+    }
+}
+
+// Page
+extension PokedexViewModel {
+    func pageViewModel(at indexPath: IndexPath) -> PokemonPageViewModel {
+        return PokemonPageViewModel(dataProvider: dataProvider,
+                                    entry: pokedexData.entries[indexPath.row])
     }
 }

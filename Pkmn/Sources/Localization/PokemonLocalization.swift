@@ -39,6 +39,10 @@ class PokemonLocalization {
     lazy var formNames: LocalizedItemMap = {
         index(items: db.formNames(for: currentLanguage))
     }()
+    
+    lazy var speciesFlavorText: LocalizedItemMap = {
+        index(items: db.speciesFlavorText(for: currentLanguage))
+    }()
 }
 
 private extension PokemonLocalization {

@@ -27,9 +27,17 @@ class PokedexViewController: UIViewController {
         navigationItem.title = pkmnLocalizedString("TabBarTitlePokedex")
         contentTableView.reloadData()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let selectedPath = contentTableView.indexPathForSelectedRow {
+            contentTableView.deselectRow(at: selectedPath, animated: true)
+        }
+    }
 }
 
-extension PokedexViewController: UITableViewDataSource, UITableViewDelegate {
+extension PokedexViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel.numberOfSections()
     }
@@ -53,5 +61,14 @@ extension PokedexViewController: UITableViewDataSource, UITableViewDelegate {
         cell.configure(with: viewModel.pokedexEntry(at: indexPath))
         
         return cell
+    }
+}
+
+extension PokedexViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let pageViewModel = viewModel.pageViewModel(at: indexPath)
+        let pageViewController = PokemonPageViewController.create(viewModel: pageViewModel)!
+
+        navigationController?.pushViewController(pageViewController, animated: true)
     }
 }
