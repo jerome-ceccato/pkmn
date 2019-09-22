@@ -54,3 +54,13 @@ private extension PokedexEntries {
         return false
     }
 }
+
+extension PokedexEntry {
+    var resourceIdentifier: String {
+        if pokemon.isDefault {
+            return "\(pokemon.identifier)"
+        } else {
+            return "\(species.identifier)-\(defaultForm.formIdentifier)"
+        }
+    }
+}

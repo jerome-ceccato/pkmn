@@ -16,16 +16,6 @@ class PokedexEntryViewModel {
     }
 }
 
-private extension PokedexEntryViewModel {
-    var resourceIdentifier: String {
-        if entry.pokemon.isDefault {
-            return "\(entry.pokemon.identifier)"
-        } else {
-            return "\(entry.species.identifier)-\(entry.defaultForm.formIdentifier)"
-        }
-    }
-}
-
 extension PokedexEntryViewModel {
     var pokedexNumber: String {
         return String(format: "%03d", entry.species.identifier)
@@ -46,10 +36,10 @@ extension PokedexEntryViewModel {
     }
     
     var iconImage: UIImage? {
-        return UIImage(named: "icon-\(resourceIdentifier)")
+        return UIImage(named: "icon-\(entry.resourceIdentifier)")
     }
     
     var mainImage: UIImage? {
-        return UIImage(named: "main-\(resourceIdentifier)")
+        return UIImage(named: "main-\(entry.resourceIdentifier)")
     }
 }

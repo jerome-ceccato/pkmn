@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PokemonPageHeaderTableViewCell: UITableViewCell, PokemonPageTableViewCellProtocol {
+class PokemonPageHeaderTableViewCell: UITableViewCell {
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var singleTypeView: UIView!
     @IBOutlet var singleTypeViewType: PokemonDefaultTypeView!
@@ -18,11 +18,11 @@ class PokemonPageHeaderTableViewCell: UITableViewCell, PokemonPageTableViewCellP
     @IBOutlet var flavorTextLabel: UILabel!
     @IBOutlet var iconImageView: UIImageView!
 
-    func configure(with viewModel: PokemonPageViewModel) {
-        nameLabel.text = viewModel.entryViewModel.name
-        setupType(viewModel.entryViewModel.types)
+    func configure(with viewModel: PokemonPageViewModel.HeaderViewModel) {
+        nameLabel.text = viewModel.name
+        setupType(viewModel.types)
         flavorTextLabel.text = viewModel.flavorText
-        iconImageView.image = viewModel.entryViewModel.mainImage?.withRenderingMode(.alwaysTemplate)
+        iconImageView.image = viewModel.backgroundImage?.withRenderingMode(.alwaysTemplate)
     }
 
     private func setupType(_ type: PokemonTypes) {

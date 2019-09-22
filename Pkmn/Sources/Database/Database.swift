@@ -32,6 +32,7 @@ class Database: DatabaseWrapper {
     let columnOrder = Expression<Int>("order")
     let columnSlot = Expression<Int>("slot")
     let columnTypeId = Expression<Int>("type_id")
+    let columnHasGenderDifferences = Expression<Bool>("has_gender_differences")
 }
 
 // Types
@@ -61,7 +62,8 @@ extension Database {
         return select(tableSpecies) { species in
             PokemonSpecies(identifier: species[columnId],
                            evolutionChainIdentifier: species[columnEvolutionChainId],
-                           name: species[columnIdentifier])
+                           name: species[columnIdentifier],
+                           hasGenderDifferences: species[columnHasGenderDifferences])
         }
     }
 }

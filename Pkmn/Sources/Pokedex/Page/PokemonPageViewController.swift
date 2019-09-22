@@ -41,9 +41,7 @@ extension PokemonPageViewController: UITableViewDataSource, UITableViewDelegate 
         let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.cellIdentifier(for: indexPath),
                                                  for: indexPath)
         
-        if let contentCell = cell as? PokemonPageTableViewCellProtocol {
-            contentCell.configure(with: viewModel)
-        }
+        viewModel.configure(cell: cell, at: indexPath)
         
         return cell
     }

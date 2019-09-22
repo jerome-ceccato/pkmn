@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ySr-y9-Ar9">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ySr-y9-Ar9">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,15 +16,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="R86-So-pvA">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" estimatedRowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="R86-So-pvA">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PokedexTableViewCell" id="Yad-ea-NCw" customClass="PokedexTableViewCell" customModule="Pkmn" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Yad-ea-NCw" id="xWQ-oN-OSl">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0n7-uO-Lb1">
@@ -39,18 +37,18 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MQG-H1-m7Q">
                                                     <rect key="frame" x="54" y="14.5" width="27.5" height="15"/>
                                                     <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="15"/>
-                                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AkT-Mj-d9K">
-                                                    <rect key="frame" x="87.5" y="10.5" width="244" height="23"/>
+                                                    <rect key="frame" x="87.5" y="10.5" width="243.5" height="23"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="u0K-ao-Fb9" customClass="TypePokeballView" customModule="Pkmn" customModuleProvider="target">
-                                                    <rect key="frame" x="339.5" y="8" width="27.5" height="27.5"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <rect key="frame" x="339" y="8" width="28" height="28"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="u0K-ao-Fb9" secondAttribute="height" multiplier="1:1" id="USs-2d-Xxb"/>
                                                     </constraints>
@@ -86,10 +84,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="R86-So-pvA" firstAttribute="trailing" secondItem="ETA-gL-N6e" secondAttribute="trailing" id="A85-EP-Yyr"/>
-                            <constraint firstItem="R86-So-pvA" firstAttribute="leading" secondItem="ETA-gL-N6e" secondAttribute="leading" id="DCq-bF-FxH"/>
+                            <constraint firstItem="R86-So-pvA" firstAttribute="leading" secondItem="r4u-TR-5Hm" secondAttribute="leading" id="0PZ-nx-h8S"/>
+                            <constraint firstAttribute="bottom" secondItem="R86-So-pvA" secondAttribute="bottom" id="8J3-ik-A6E"/>
+                            <constraint firstAttribute="trailing" secondItem="R86-So-pvA" secondAttribute="trailing" id="fgA-Ii-17b"/>
                             <constraint firstItem="R86-So-pvA" firstAttribute="top" secondItem="r4u-TR-5Hm" secondAttribute="top" id="sDr-yL-jjt"/>
-                            <constraint firstItem="R86-So-pvA" firstAttribute="bottom" secondItem="ETA-gL-N6e" secondAttribute="bottom" id="zhW-Zy-HKS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ETA-gL-N6e"/>
                     </view>
