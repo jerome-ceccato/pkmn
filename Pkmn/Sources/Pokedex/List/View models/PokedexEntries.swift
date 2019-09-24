@@ -46,12 +46,9 @@ class PokedexEntries {
 // Utils
 private extension PokedexEntries {
     static func shouldBeIncluded(entry: PokedexEntry) -> Bool {
-        if (entry.pokemon.isDefault) {
-            return true
-        } else if entry.defaultForm.isMega {
-            return true
-        }
-        return false
+        return entry.pokemon.isDefault
+        || entry.defaultForm.isMega
+        || entry.defaultForm.formIdentifier == "alola"
     }
 }
 

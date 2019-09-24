@@ -24,10 +24,10 @@ extension PokedexEntryViewModel {
     var name: String {
         if entry.species.identifier == entry.pokemon.identifier {
             return entry.species.localizedName
-        } else if let form = entry.forms.first {
-            return form.localizedName
+        } else if entry.defaultForm.formIdentifier == "alola" {
+            return "\(entry.species.localizedName) \(entry.defaultForm.localizedName)"
         } else {
-            return "???"
+            return entry.defaultForm.localizedName
         }
     }
     
@@ -41,5 +41,9 @@ extension PokedexEntryViewModel {
     
     var mainImage: UIImage? {
         return UIImage(named: "main-\(entry.resourceIdentifier)")
+    }
+    
+    var artImage: UIImage? {
+        return UIImage(named: "art-\(entry.resourceIdentifier)")
     }
 }

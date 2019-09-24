@@ -31,37 +31,57 @@ class PokemonPageViewModel {
     
     private enum PageCell {
         case header
-        case sprites
+        case basicinfo
+        case flavorText
     }
 
-    private lazy var cells: [PageCell] = {
-        return [.header, .sprites]
+    private lazy var cellTypes: [PageCell] = {
+        return [.basicinfo, .header, .flavorText]
     }()
+}
+
+// Utils
+private extension PokemonPageViewModel {
+    var isMainPokemonForSpecies: Bool {
+        return entry.species.identifier == entry.pokemon.identifier
+    }
 }
 
 // View controller
 extension PokemonPageViewModel {
-    var numberOfRows: Int {
-        return cells.count
+    var numberOfSections: Int {
+        return cellTypes.count
+    }
+    
+    func numberOfItems(for section: Int) -> Int {
+        switch cellTypes[section] {
+        case .header, .basicinfo, .flavorText:
+            return 1
+        }
     }
     
     func cellIdentifier(for indexPath: IndexPath) -> String {
-        switch cells[indexPath.row] {
+        switch cellTypes[indexPath.section] {
         case .header:
             return String(describing: PokemonPageHeaderTableViewCell.self)
-        case .sprites:
-            return String(describing: PokemonPageSpritesTableViewCell.self)
+        case .basicinfo:
+            return String(describing: PokemonPageArtworkTableViewCell.self)
+        case .flavorText:
+            return String(describing: PokemonPageFlavorTextTableViewCell.self)
         }
     }
     
     func configure(cell: UITableViewCell, at indexPath: IndexPath) {
-        switch cells[indexPath.row] {
+        switch cellTypes[indexPath.section] {
         case .header:
             let cell = cell as! PokemonPageHeaderTableViewCell
             return cell.configure(with: HeaderViewModel(pageViewModel: self))
-        case .sprites:
-            let cell = cell as! PokemonPageSpritesTableViewCell
-            return cell.configure(with: SpritesViewModel(pageViewModel: self))
+        case .basicinfo:
+            let cell = cell as! PokemonPageArtworkTableViewCell
+            return cell.configure(with: ArtworkViewModel(pageViewModel: self))
+        case .flavorText:
+            let cell = cell as! PokemonPageFlavorTextTableViewCell
+            return cell.configure(with: FlavorTextViewModel(pageViewModel: self))
         }
     }
 }
@@ -77,31 +97,26 @@ extension PokemonPageViewModel {
             return pageViewModel.entryViewModel.types
         }
         
-        var backgroundImage: UIImage? {
-            return pageViewModel.entryViewModel.mainImage
-        }
-        
-        var flavorText: String {
-            return pkmnLocalized(speciesFlavorText: pageViewModel.entry.species).replacingOccurrences(of: "\n", with: " ")
+        var spriteImage: UIImage? {
+            return pageViewModel.entryViewModel.artImage
         }
     }
 }
 
-// Sprites
+// Info
 extension PokemonPageViewModel {
-    class SpritesViewModel: _SubViewModel {
-        let images: [UIImage]
-        
-        override init(pageViewModel: PokemonPageViewModel) {
-            var allImages = [UIImage?]()
-            let resourceId = pageViewModel.entry.resourceIdentifier
-            allImages.append(UIImage(named: "main-\(resourceId)"))
-            allImages.append(UIImage(named: "main-s-\(resourceId)"))
-            allImages.append(UIImage(named: "main-f-\(resourceId)"))
-            allImages.append(UIImage(named: "main-sf-\(resourceId)"))
-            self.images = allImages.compactMap({ $0 })
+    class ArtworkViewModel: _SubViewModel {
+        var artworkImage: UIImage? {
+            return pageViewModel.entryViewModel.artImage
+        }
+    }
+}
 
-            super.init(pageViewModel: pageViewModel)
+// Flavor text
+extension PokemonPageViewModel {
+    class FlavorTextViewModel: _SubViewModel {
+        var flavorText: String {
+            return pkmnLocalized(speciesFlavorText: pageViewModel.entry.species).replacingOccurrences(of: "\n", with: " ")
         }
     }
 }

@@ -15,14 +15,10 @@ class PokemonPageHeaderTableViewCell: UITableViewCell {
     @IBOutlet var doubleTypeView: UIView!
     @IBOutlet var doubleTypeViewFirstType: PokemonDefaultTypeView!
     @IBOutlet var doubleTypeViewSecondType: PokemonDefaultTypeView!
-    @IBOutlet var flavorTextLabel: UILabel!
-    @IBOutlet var iconImageView: UIImageView!
 
     func configure(with viewModel: PokemonPageViewModel.HeaderViewModel) {
         nameLabel.text = viewModel.name
         setupType(viewModel.types)
-        flavorTextLabel.text = viewModel.flavorText
-        iconImageView.image = viewModel.backgroundImage?.withRenderingMode(.alwaysTemplate)
     }
 
     private func setupType(_ type: PokemonTypes) {

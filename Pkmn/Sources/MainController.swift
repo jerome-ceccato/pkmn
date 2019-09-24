@@ -24,6 +24,11 @@ class MainController: NSObject {
     func setupApplicationRootController() -> UIViewController {
         localizationGlobalProvider = localizationProvider
         
+        //#if targetEnvironment(simulator)
+        localizationProvider.currentLanguage = Language(identifier: 9, name: "en")
+        //localizationProvider.currentLanguage = Language(identifier: 5, name: "fr")
+        //#endif
+        
         let typeEfficacyVC = pokemonTypeEfficacyController()
         let pokedexVC = pokedexController()
         

@@ -24,17 +24,18 @@ class PokemonPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        contentTableView.tableFooterView = UIView()
         contentTableView.reloadData()
     }
 }
 
 extension PokemonPageViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return viewModel.numberOfSections
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfRows
+        return viewModel.numberOfItems(for: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
