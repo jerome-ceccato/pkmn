@@ -20,12 +20,16 @@ class PokedexViewController: UIViewController {
     }
 
     @IBOutlet var contentTableView: UITableView!
+    var searchController: UISearchController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewModel.delegate = self
+
         navigationItem.title = pkmnLocalizedString("TabBarTitlePokedex")
-        contentTableView.reloadData()
+        setupSearchController()
+        reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -34,6 +38,30 @@ class PokedexViewController: UIViewController {
         if let selectedPath = contentTableView.indexPathForSelectedRow {
             contentTableView.deselectRow(at: selectedPath, animated: true)
         }
+    }
+}
+
+extension PokedexViewController: PokedexViewModelDelegate {
+    func reloadData() {
+        contentTableView.reloadData()
+    }
+}
+
+extension PokedexViewController {
+    private func setupSearchController() {
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = viewModel
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.autocapitalizationType = .none
+        
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = searchController
+        } else {
+            searchController.searchBar.sizeToFit()
+            contentTableView.tableHeaderView = searchController.searchBar
+        }
+
+        definesPresentationContext = true
     }
 }
 
