@@ -15,7 +15,8 @@ class PokedexTableViewCell: UITableViewCell {
     @IBOutlet var typesView: TypePokeballView!
 
     func configure(with viewModel: PokedexEntryViewModel) {
-        nameLabel.text = viewModel.name
+        nameLabel.attributedText = viewModel.stylizedName(regularFont: UIFont.systemFont(ofSize: 19),
+                                                          extraFont: UIFont.systemFont(ofSize: 15))
         numberLabel.text = viewModel.pokedexNumber
         typesView.types = viewModel.types
         pictureImageView.image = viewModel.iconImage

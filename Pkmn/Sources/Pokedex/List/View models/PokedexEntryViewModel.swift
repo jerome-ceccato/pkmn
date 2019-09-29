@@ -20,15 +20,38 @@ extension PokedexEntryViewModel {
     var pokedexNumber: String {
         return String(format: "%03d", entry.species.identifier)
     }
+    
+    private var nameItems: [String] {
+        if entry.species.identifier == entry.pokemon.identifier {
+            return [entry.species.localizedName]
+        } else if entry.defaultForm.formIdentifier == "alola" {
+            return [entry.species.localizedName, entry.defaultForm.localizedName]
+        } else {
+            return [entry.defaultForm.localizedName]
+        }
+    }
 
     var name: String {
-        if entry.species.identifier == entry.pokemon.identifier {
-            return entry.species.localizedName
-        } else if entry.defaultForm.formIdentifier == "alola" {
-            return "\(entry.species.localizedName) \(entry.defaultForm.localizedName)"
-        } else {
-            return entry.defaultForm.localizedName
+        return nameItems.joined(separator: " ")
+    }
+    
+    func stylizedName(regularFont: UIFont, extraFont: UIFont) -> NSAttributedString {
+        let ret = NSMutableAttributedString()
+        let regularAttributes: [NSAttributedString.Key: Any] = [
+            .font: regularFont,
+            .foregroundColor: UIColor.dynamicLabel
+        ]
+        let extraAttributes: [NSAttributedString.Key: Any] = [
+            .font: extraFont,
+            .foregroundColor: UIColor.dynamicSecondaryLabel
+        ]
+
+        for (index, item) in nameItems.enumerated() {
+            ret.append(NSAttributedString(string: index == 0 ? item : " \(item)",
+                                          attributes: index == 0 ? regularAttributes : extraAttributes))
         }
+        
+        return ret
     }
     
     var types: PokemonTypes {

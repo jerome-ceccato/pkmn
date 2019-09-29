@@ -20,3 +20,21 @@ extension UIColor {
 extension UIColor {
     static let systemDefaultTint = UIView().tintColor!
 }
+
+extension UIColor {
+    static let dynamicLabel: UIColor = {
+        if #available(iOS 13, *) {
+            return .label
+        } else {
+            return .black
+        }
+    }()
+
+    static let dynamicSecondaryLabel: UIColor = {
+        if #available(iOS 13, *) {
+            return .secondaryLabel
+        } else {
+            return UIColor(hexValue: 0x3c3c43, alpha: 0.6)
+        }
+    }()
+}
