@@ -25,7 +25,7 @@ class PokemonTypeSelectionButton: UIButton {
     
     private func updateState(selected: Bool) {
         if (selected) {
-            backgroundColor = type.lightColor().withAlphaComponent(0.2)
+            backgroundColor = type.backgroundColor(for: traitCollection)
             layer.shadowOpacity = 0
         } else {
             backgroundColor = type.color()
@@ -36,7 +36,7 @@ class PokemonTypeSelectionButton: UIButton {
     
     private func updatedAttributedTitle(selected: Bool) -> NSAttributedString {
         let fontWeight: UIFont.Weight = selected ? .black : .bold
-        let color: UIColor = selected ? type.darkColor().withAlphaComponent(0.6) : .white
+        let color: UIColor = selected ? type.foregroundColor(for: traitCollection) : .white
         
         return NSAttributedString(string: type.localizedName, attributes: [.font: UIFont.systemFont(ofSize: 17, weight: fontWeight),
                                                                            .foregroundColor: color])

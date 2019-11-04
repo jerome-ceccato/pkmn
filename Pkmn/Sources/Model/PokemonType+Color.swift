@@ -80,13 +80,31 @@ extension PokemonType {
         return UIColor(hexValue: rawColor)
     }
     
-    func lightColor() -> UIColor {
+    private func lightColor() -> UIColor {
         let rawColor = PokemonType.colorMappingLight[name] ?? PokemonType.unknownColorLight
         return UIColor(hexValue: rawColor)
     }
     
-    func darkColor() -> UIColor {
+    private func darkColor() -> UIColor {
         let rawColor = PokemonType.colorMappingDark[name] ?? PokemonType.unknownColorDark
         return UIColor(hexValue: rawColor)
+    }
+    
+    private func isDarkMode(traits: UITraitCollection) -> Bool {
+        if #available(iOS 12.0, *) {
+            return traits.userInterfaceStyle == .dark
+        } else {
+            return false
+        }
+    }
+    
+    func foregroundColor(for traits: UITraitCollection) -> UIColor {
+        let color = isDarkMode(traits: traits) ? lightColor() : darkColor()
+        return color.withAlphaComponent(0.6)
+    }
+    
+    func backgroundColor(for traits: UITraitCollection) -> UIColor {
+        let color = isDarkMode(traits: traits) ? darkColor() : lightColor()
+        return color.withAlphaComponent(0.2)
     }
 }
