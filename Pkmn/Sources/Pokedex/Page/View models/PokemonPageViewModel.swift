@@ -75,6 +75,7 @@ extension PokemonPageViewModel {
         switch cellTypes[indexPath.section] {
         case .header:
             let cell = cell as! PokemonPageHeaderTableViewCell
+            EvolutionLineViewModel(pageViewModel: self).test()
             return cell.configure(with: HeaderViewModel(pageViewModel: self))
         case .basicinfo:
             let cell = cell as! PokemonPageArtworkTableViewCell
@@ -117,6 +118,32 @@ extension PokemonPageViewModel {
     class FlavorTextViewModel: _SubViewModel {
         var flavorText: String {
             return pkmnLocalized(speciesFlavorText: pageViewModel.entry.species).replacingOccurrences(of: "\n", with: " ")
+        }
+    }
+}
+
+// Evolutions
+extension PokemonPageViewModel {
+    class EvolutionLineViewModel: _SubViewModel {
+        var evolutionChain: PokemonEvolutionChain {
+            let speciesId = pageViewModel.entry.species.identifier
+            return pageViewModel.dataProvider.evolutionChainsFromSpeciesMappping[speciesId]!
+        }
+        
+        func test() {
+            var firstChain = evolutionChain
+            while firstChain.preEvolution != nil {
+                firstChain = firstChain.preEvolution!
+            }
+            
+            func printChain(from: PokemonEvolutionChain, level: Int = 0, evolutionInfo: PokemonEvolution? = nil) {
+                let index = String(repeating: "--", count: level)
+                let info = evolutionInfo.map { "\($0.evolutionTriggerIdentifier) \($0.minimumLevel)" } ?? ""
+                print("\(index) \(from.species.localizedName) (\(info))")
+                from.evolutions.forEach { printChain(from: $0.next, level: level + 1, evolutionInfo: $0.requirement) }
+            }
+            
+            printChain(from: firstChain)
         }
     }
 }

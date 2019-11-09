@@ -14,9 +14,9 @@ class Database: DatabaseWrapper {
     let tableTypeEfficacy = Table("type_efficacy")
     let tableSpecies = Table("pokemon_species")
     let tablePokemon = Table("pokemon")
-    let tableEvolutionChains = Table("evolution_chains")
     let tableForms = Table("pokemon_forms")
     let tablePokemonTypes = Table("pokemon_types")
+    let tableEvolutions = Table("pokemon_evolution")
     
     let columnId = Expression<Int>("id")
     let columnIdentifier = Expression<String>("identifier")
@@ -33,6 +33,10 @@ class Database: DatabaseWrapper {
     let columnSlot = Expression<Int>("slot")
     let columnTypeId = Expression<Int>("type_id")
     let columnHasGenderDifferences = Expression<Bool>("has_gender_differences")
+    let columnEvolvedSpeciesId = Expression<Int>("evolved_species_id")
+    let columnEvolvesFromSpeciesId = Expression<Int?>("evolves_from_species_id")
+    let columnEvolutionTriggerId = Expression<Int>("evolution_trigger_id")
+    let columnMinimumLevel = Expression<Int?>("minimum_level")
 }
 
 // Types
@@ -62,6 +66,7 @@ extension Database {
         return select(tableSpecies) { species in
             PokemonSpecies(identifier: species[columnId],
                            evolutionChainIdentifier: species[columnEvolutionChainId],
+                           previousSpeciesId: species[columnEvolvesFromSpeciesId],
                            name: species[columnIdentifier],
                            hasGenderDifferences: species[columnHasGenderDifferences])
         }
@@ -70,12 +75,6 @@ extension Database {
 
 // Pokemon
 extension Database {
-    var evolutionChains: [Int] {
-        return select(tableEvolutionChains) { chain in
-            chain[columnId]
-        }
-    }
-
     var pokemon: [Pokemon] {
         return select(tablePokemon) { pokemon in
             Pokemon(identifier: pokemon[columnId],
@@ -108,6 +107,17 @@ extension Database {
                         isDefault: form[columnIsDefault],
                         isMega: form[columnIsMega],
                         order: form[columnOrder])
+        }
+    }
+}
+
+// Evolutions
+extension Database {
+    var evolutions: [PokemonEvolution] {
+        return select(tableEvolutions) { evolution in
+            PokemonEvolution(speciesIdentifier: evolution[columnEvolvedSpeciesId],
+                             evolutionTriggerIdentifier: evolution[columnEvolutionTriggerId],
+                             minimumLevel: evolution[columnMinimumLevel] ?? -1)
         }
     }
 }

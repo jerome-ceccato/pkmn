@@ -18,9 +18,9 @@ class DataProvider {
     lazy var types: [PokemonType] = db.types
     lazy var species: [PokemonSpecies] = db.species
     lazy var pokemon: [Pokemon] = db.pokemon
-    lazy var evolutionChains: [Int] = db.evolutionChains
     lazy var forms: [PokemonForm] = db.forms
     lazy var pokemonRawTypes: [PokemonRawType] = db.pokemonRawType
+    lazy var evolutions: [PokemonEvolution] = db.evolutions
     
     // Type efficacy mapping
 
@@ -101,6 +101,37 @@ class DataProvider {
             mapping[key] = PokemonTypes(primaryType: typesIdMapping[firstTypeIdentifier]!,
                                         secondaryType: secondTypeIdentifier.map({ typesIdMapping[$0]! }))
         }
+        return mapping
+    }()
+    
+    // Evolutions
+
+    lazy var evolutionIdMapping: [Int: PokemonEvolution] = {
+        var mapping = [Int: PokemonEvolution]()
+        evolutions.forEach { item in
+            mapping[item.speciesIdentifier] = item
+        }
+        return mapping
+    }()
+    
+    lazy var evolutionChainsFromSpeciesMappping: [Int: PokemonEvolutionChain] = {
+        var mapping = [Int: PokemonEvolutionChain]()
+        species.forEach { species in
+            mapping[species.identifier] = PokemonEvolutionChain(species: species)
+        }
+        
+        species.forEach { species in
+            if let previousSpeciesId = species.previousSpeciesId,
+                let previousSpecies = speciesIdMapping[previousSpeciesId] {
+                let current = mapping[previousSpecies.identifier]!
+                let next = mapping[species.identifier]!
+                let requirements = evolutionIdMapping[species.identifier]!
+
+                current.evolutions.append(PokemonEvolutionChain.Evolution(requirement: requirements, next: next))
+                next.preEvolution = current
+            }
+        }
+
         return mapping
     }()
 }

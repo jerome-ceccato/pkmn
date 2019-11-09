@@ -11,6 +11,7 @@ import UIKit
 struct PokemonSpecies {
     let identifier: Int
     let evolutionChainIdentifier: Int
+    let previousSpeciesId: Int?
     let name: String
     
     let hasGenderDifferences: Bool
