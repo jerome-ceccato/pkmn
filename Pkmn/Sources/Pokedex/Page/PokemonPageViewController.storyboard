@@ -228,6 +228,49 @@
                                             <outlet property="flavorTextLabel" destination="PoU-Vq-i3U" id="J5d-Jr-BJk"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PokemonPageEvolutionEntryTableViewCell" id="Pti-6g-hbF" customClass="PokemonPageEvolutionEntryTableViewCell" customModule="Pkmn" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="413" width="375" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Pti-6g-hbF" id="U9M-qw-wiB">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fge-o8-hX7">
+                                                    <rect key="frame" x="0.0" y="0.0" width="43.5" height="43.5"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="Fge-o8-hX7" secondAttribute="height" multiplier="1:1" id="pO0-sk-WeU"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Species name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nns-5h-Aee">
+                                                    <rect key="frame" x="59.5" y="12" width="101.5" height="19.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="(trigger)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4c2-zP-PHk">
+                                                    <rect key="frame" x="169" y="13.5" width="54" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="Nns-5h-Aee" secondAttribute="bottom" constant="12" id="I7f-tU-DaC"/>
+                                                <constraint firstItem="4c2-zP-PHk" firstAttribute="centerY" secondItem="Nns-5h-Aee" secondAttribute="centerY" id="Mat-GQ-Uvx"/>
+                                                <constraint firstItem="4c2-zP-PHk" firstAttribute="leading" secondItem="Nns-5h-Aee" secondAttribute="trailing" constant="8" id="Plx-OM-BJ7"/>
+                                                <constraint firstItem="Fge-o8-hX7" firstAttribute="top" secondItem="U9M-qw-wiB" secondAttribute="top" id="QG8-j2-Q1Q"/>
+                                                <constraint firstItem="Nns-5h-Aee" firstAttribute="leading" secondItem="Fge-o8-hX7" secondAttribute="trailing" constant="16" id="QSP-Q0-9fu"/>
+                                                <constraint firstItem="Nns-5h-Aee" firstAttribute="top" secondItem="U9M-qw-wiB" secondAttribute="top" constant="12" id="SIq-BN-LOl"/>
+                                                <constraint firstAttribute="bottom" secondItem="Fge-o8-hX7" secondAttribute="bottom" id="cA0-W0-JnT"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="4c2-zP-PHk" secondAttribute="trailing" constant="16" id="myW-ug-mdv"/>
+                                                <constraint firstItem="Fge-o8-hX7" firstAttribute="leading" secondItem="U9M-qw-wiB" secondAttribute="leading" id="vhN-mn-43V"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="evolutionTriggerLabel" destination="4c2-zP-PHk" id="4AX-to-mrL"/>
+                                            <outlet property="speciesNameLabel" destination="Nns-5h-Aee" id="v2s-FF-9h5"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="plR-ow-sN8" id="bB9-FO-K1g"/>

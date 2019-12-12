@@ -27,6 +27,7 @@
 		026A81702340F58C007657F4 /* pokemon-art.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 026A816F2340F58C007657F4 /* pokemon-art.xcassets */; };
 		026A8172234107E7007657F4 /* PokedexCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026A8171234107E7007657F4 /* PokedexCellViewModel.swift */; };
 		026A81742370B914007657F4 /* PokemonEvolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026A81732370B914007657F4 /* PokemonEvolution.swift */; };
+		026A817623A2EDC4007657F4 /* PokemonPageEvolutionEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026A817523A2EDC4007657F4 /* PokemonPageEvolutionEntryTableViewCell.swift */; };
 		02770DFC233784E000C4CB0C /* pokemon-main-shiny-female.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02770DF9233784DF00C4CB0C /* pokemon-main-shiny-female.xcassets */; };
 		02770DFD233784E000C4CB0C /* pokemon-main-shiny.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02770DFA233784DF00C4CB0C /* pokemon-main-shiny.xcassets */; };
 		02770DFE233784E000C4CB0C /* pokemon-main-female.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02770DFB233784E000C4CB0C /* pokemon-main-female.xcassets */; };
@@ -106,6 +107,7 @@
 		026A816F2340F58C007657F4 /* pokemon-art.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "pokemon-art.xcassets"; path = "../../../pkmndb/data/generated/pokemon-art.xcassets"; sourceTree = "<group>"; };
 		026A8171234107E7007657F4 /* PokedexCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexCellViewModel.swift; sourceTree = "<group>"; };
 		026A81732370B914007657F4 /* PokemonEvolution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonEvolution.swift; sourceTree = "<group>"; };
+		026A817523A2EDC4007657F4 /* PokemonPageEvolutionEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonPageEvolutionEntryTableViewCell.swift; sourceTree = "<group>"; };
 		02770DF9233784DF00C4CB0C /* pokemon-main-shiny-female.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "pokemon-main-shiny-female.xcassets"; path = "../../../pkmndb/data/generated/pokemon-main-shiny-female.xcassets"; sourceTree = "<group>"; };
 		02770DFA233784DF00C4CB0C /* pokemon-main-shiny.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "pokemon-main-shiny.xcassets"; path = "../../../pkmndb/data/generated/pokemon-main-shiny.xcassets"; sourceTree = "<group>"; };
 		02770DFB233784E000C4CB0C /* pokemon-main-female.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "pokemon-main-female.xcassets"; path = "../../../pkmndb/data/generated/pokemon-main-female.xcassets"; sourceTree = "<group>"; };
@@ -399,6 +401,7 @@
 				029056AE23364C7000A5A269 /* PokemonPageHeaderTableViewCell.swift */,
 				026A816B233AB03B007657F4 /* PokemonPageArtworkTableViewCell.swift */,
 				02770E03233A9C2200C4CB0C /* PokemonPageFlavorTextTableViewCell.swift */,
+				026A817523A2EDC4007657F4 /* PokemonPageEvolutionEntryTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -642,6 +645,7 @@
 				0290567E23083BBE00A5A269 /* PokedexTableViewCell.swift in Sources */,
 				02235C3922F6028200F80AC6 /* PokemonSpecies.swift in Sources */,
 				0218413D22C7C064007E5336 /* PokemonTypeEfficacyCollectionHeaderView.swift in Sources */,
+				026A817623A2EDC4007657F4 /* PokemonPageEvolutionEntryTableViewCell.swift in Sources */,
 				025503C122C6A374003D2149 /* PokemonTypeSelectionButton.swift in Sources */,
 				029056A82336491000A5A269 /* PokemonPageViewModel.swift in Sources */,
 				02235C0E22D275B400F80AC6 /* LocalizationUtils.swift in Sources */,

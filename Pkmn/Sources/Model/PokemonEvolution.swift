@@ -28,3 +28,21 @@ class PokemonEvolutionChain {
         self.species = species
     }
 }
+
+extension PokemonEvolutionChain {
+    var firstEvolutionInChain: PokemonEvolutionChain {
+        if let pre = preEvolution {
+            return pre.firstEvolutionInChain
+        } else {
+            return self
+        }
+    }
+    
+    var orderedChain: [PokemonEvolutionChain] {
+        return [self] + evolutions.flatMap { $0.next.orderedChain }
+    }
+
+    var numberOfSpeciesInChain: Int {
+        return firstEvolutionInChain.orderedChain.count
+    }
+}

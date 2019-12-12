@@ -33,18 +33,23 @@ class PokemonPageViewModel {
         case header
         case basicinfo
         case flavorText
+        case evolutionLine
     }
 
     private lazy var cellTypes: [PageCell] = {
-        return [.basicinfo, .header, .flavorText]
+        return [.basicinfo, .header, .flavorText, .evolutionLine]
     }()
-}
 
-// Utils
-private extension PokemonPageViewModel {
-    var isMainPokemonForSpecies: Bool {
+    // Utils
+
+    private lazy var isMainPokemonForSpecies: Bool = {
         return entry.species.identifier == entry.pokemon.identifier
-    }
+    }()
+    
+    private lazy var evolutionChain: PokemonEvolutionChain = {
+        let speciesId = entry.species.identifier
+        return dataProvider.evolutionChainsFromSpeciesMappping[speciesId]!
+    }()
 }
 
 // View controller
@@ -57,6 +62,8 @@ extension PokemonPageViewModel {
         switch cellTypes[section] {
         case .header, .basicinfo, .flavorText:
             return 1
+        case .evolutionLine:
+            return evolutionChain.numberOfSpeciesInChain
         }
     }
     
@@ -68,6 +75,8 @@ extension PokemonPageViewModel {
             return String(describing: PokemonPageArtworkTableViewCell.self)
         case .flavorText:
             return String(describing: PokemonPageFlavorTextTableViewCell.self)
+        case .evolutionLine:
+            return String(describing: PokemonPageEvolutionEntryTableViewCell.self)
         }
     }
     
@@ -75,7 +84,6 @@ extension PokemonPageViewModel {
         switch cellTypes[indexPath.section] {
         case .header:
             let cell = cell as! PokemonPageHeaderTableViewCell
-            EvolutionLineViewModel(pageViewModel: self).test()
             return cell.configure(with: HeaderViewModel(pageViewModel: self))
         case .basicinfo:
             let cell = cell as! PokemonPageArtworkTableViewCell
@@ -83,6 +91,9 @@ extension PokemonPageViewModel {
         case .flavorText:
             let cell = cell as! PokemonPageFlavorTextTableViewCell
             return cell.configure(with: FlavorTextViewModel(pageViewModel: self))
+        case .evolutionLine:
+            let cell = cell as! PokemonPageEvolutionEntryTableViewCell
+            return cell.configure(with: EvolutionLineViewModel(pageViewModel: self, index: indexPath.row))
         }
     }
 }
@@ -125,25 +136,38 @@ extension PokemonPageViewModel {
 // Evolutions
 extension PokemonPageViewModel {
     class EvolutionLineViewModel: _SubViewModel {
-        var evolutionChain: PokemonEvolutionChain {
-            let speciesId = pageViewModel.entry.species.identifier
-            return pageViewModel.dataProvider.evolutionChainsFromSpeciesMappping[speciesId]!
+        let index: Int
+        
+        fileprivate init(pageViewModel: PokemonPageViewModel, index: Int) {
+            self.index = index
+            super.init(pageViewModel: pageViewModel)
         }
         
-        func test() {
-            var firstChain = evolutionChain
-            while firstChain.preEvolution != nil {
-                firstChain = firstChain.preEvolution!
+        private lazy var item: PokemonEvolutionChain = {
+            return pageViewModel.evolutionChain.firstEvolutionInChain.orderedChain[index]
+        }()
+        
+        private lazy var evolution: PokemonEvolution? = {
+            if let previous = item.preEvolution {
+                for possibleEvolution in previous.evolutions {
+                    if possibleEvolution.next.species.identifier == item.species.identifier {
+                        return possibleEvolution.requirement
+                    }
+                }
             }
-            
-            func printChain(from: PokemonEvolutionChain, level: Int = 0, evolutionInfo: PokemonEvolution? = nil) {
-                let index = String(repeating: "--", count: level)
-                let info = evolutionInfo.map { "\($0.evolutionTriggerIdentifier) \($0.minimumLevel)" } ?? ""
-                print("\(index) \(from.species.localizedName) (\(info))")
-                from.evolutions.forEach { printChain(from: $0.next, level: level + 1, evolutionInfo: $0.requirement) }
+            return nil
+        }()
+        
+        var speciesName: String {
+            return item.species.localizedName
+        }
+        
+        var evolutionTrigger: String? {
+            if let evolution = evolution {
+                return "(\(evolution.evolutionTriggerIdentifier) \(evolution.minimumLevel))"
+            } else {
+                return nil
             }
-            
-            printChain(from: firstChain)
         }
     }
 }
